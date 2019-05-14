@@ -17,22 +17,11 @@ Page({
     type:'',//判断下一步去哪一个页面
   },
   toSchoolPage(){
-    if (this.data.type == 1){
-      wx.navigateTo({
-        url: '/pages/VPSubjectIn/school',
-      })
-    } else if (this.data.type == 2){
-        wx.navigateTo({
-          url: '/pages/professionalInto/index',
-        })
-    } else if (this.data.type == 3) {
-        wx.navigateTo({
-          url: '/pages/characterTest/index',
-        })
-    }
+    this.saveAchi()
+    
     
   },
-  changeData(){
+  changeData(e){
     let type = e.target.dataset.type
     let value = e.detail.value
     this.setData({
@@ -40,9 +29,30 @@ Page({
     })
   },
   saveAchi(){
-    app.request.achievementUpdate()
+    let data = {
+      total: this.data.total,
+      ranking: this.data.pLevel,
+      chinese: this.data.chinese,
+      english: this.data.english,
+      mathematics: this.data.mathematics,
+      complex: this.data.average,
+    }
+    app.request.achievementUpdate({ ...data })
       .then(r =>{
         console.log(r)
+        if (this.data.type == 1) {
+          wx.navigateTo({
+            url: '/pages/VPSubjectIn/school',
+          })
+        } else if (this.data.type == 2) {
+          wx.navigateTo({
+            url: '/pages/professionalInto/index',
+          })
+        } else if (this.data.type == 3) {
+          wx.navigateTo({
+            url: '/pages/characterTest/index',
+          })
+        }
       })
   },
   /**
@@ -52,7 +62,6 @@ Page({
     this.setData({
       type: options.type
     })
-    this.saveAchi()
   },
 
   /**

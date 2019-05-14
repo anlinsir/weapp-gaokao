@@ -94,6 +94,12 @@ class api {
     return this._request.getRequest(this._baseUrl + '/api/v1/achievement/update', { ...data }).then(res => res.data)
 
   }
+  //推荐高校列表
+  recommendedSchools({...data}){
+    return this._request.getRequest(this._baseUrl + '/api/v1/achievement', { ...data }).then(res => res.data)
+
+  }
+
 
 }
 export default api

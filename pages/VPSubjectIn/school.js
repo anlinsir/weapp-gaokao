@@ -138,6 +138,13 @@ Page({
     this.setData({
       examinationBatch: app.examinationBatch
     })
+    this.getReSchoolList()
+  },
+  getReSchoolList({ ...data }){
+    app.request.recommendedSchools({...data})
+      .then(r=>{
+        console.log(r)
+      })
   },
 
   /**
