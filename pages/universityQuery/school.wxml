@@ -1,0 +1,67 @@
+<!--pages/universityQuery/school.wxml-->
+<view class='search-box flex f-c'>
+  <input placeholder='输入学校名字'></input>
+  <image src='../../static/tabbar/search.png'></image>
+</view>
+
+<!-- <view class='fixed' hidden="{{showAddress <= 0}}"></view> -->
+<view class='down-menu text-center main-text-color'>
+  <view bindtap='changeAddressStatus' data-id="1" class='menu-item'>
+    <text data-id="1">高考地址</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+  <view  bindtap='changeAddressStatus' data-id="2" class='menu-item'>
+    <text data-id="2">{{examinationBatchChoose?examinationBatch[examinationBatchChoose - 1].name:'报考批次'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+  <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
+    <text data-id="3">{{probabilityID?probabilityList[probabilityID - 1].name:'录取概率'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+
+<view  hidden="{{showAddress != 1}}"  class='K-address-box'>
+  <view class='K-address'>
+    <view wx:key="{{item}}"
+     class="{{activeAddress[item] ? 'activeAddress item' : 'item'}}" data-id="{{item}}"           bindtap='getAddress' wx:for="{{32}}" >全国</view>
+  </view>
+
+  <view class='function-box '>
+    <view class='sub-text-color'>*可多选</view>
+    <button data-id="1"  bindtap='changeAddressStatus' class='main-button'>确定</button>
+  </view>
+</view>
+
+
+<view hidden="{{showAddress != 2}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view style="color:{{examinationBatchChoose == item.id ?'#FBA97F':''}}" bindtap='BatchChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
+  </view>
+
+</view>
+
+<view hidden="{{showAddress != 3}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view  style="color:{{probabilityID == item.id ?'#FBA97F':''}}" bindtap='probabilityChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{probabilityList}}"  class="P-box-item">{{item.name}}</view>
+  </view>
+
+</view>
+
+</view>
+
+<newSchoolItem
+  wx:for="{{schoolList}}"
+  wx:key="{{item.id}}"
+
+  Sname="{{item.name}}"
+  logo="{{item.logo}}"
+ 
+ />
+ <view hidden="{{!loading && schoolList.length==0}}">
+    <i-load-more tip="{{ schoolList.length>0&&!loading?'暂无更多数据':'' }}" loading="{{ loading }}" />      
+ </view>
+
+ <view wx:if="{{!loading && schoolList.length==0}}">
+    <i-load-more tip="{{ schoolList.length == 0 && !loading?'暂无数据':'' }}" loading="{{ loading }}" />      
+ </view>
+

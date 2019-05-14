@@ -1,0 +1,1 @@
+<button bindgetuserinfo="getInfo" open-type="getUserInfo">获取</button>

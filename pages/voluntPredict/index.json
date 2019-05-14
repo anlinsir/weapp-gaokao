@@ -1,0 +1,6 @@
+{
+  "usingComponents": {"Dropdown": "/component/Dropdown/index"},
+  "navigationBarBackgroundColor":"#000000",
+  "navigationBarTitleText":"志愿测评",
+  "navigationBarTextStyle":"white"
+}

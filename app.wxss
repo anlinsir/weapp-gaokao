@@ -1,0 +1,81 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+input,button{
+  outline: none;
+  border: none;
+}
+input::placeholder{
+  font-size:28rpx;
+  color: #ccc;
+}
+.flex{
+  display: flex;
+}
+.f-b{
+  justify-content: space-between;
+}
+.f-a{
+  justify-content: space-around;
+}
+.f-c{
+  justify-content: center;
+}
+.f-w{
+  flex-wrap: wrap;
+}
+.mid{
+  position: absolute;
+  top:0%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.text-center{
+  text-align: center;
+}
+.white{
+  color: #fff;
+}
+.main-text-color{
+  color: #666;
+}
+.sub-text-color{
+  color: #999;
+}
+
+.main-button{
+  width:640rpx;
+  height:100rpx;
+  background:linear-gradient(90deg,rgba(249,212,35,1),rgba(255,78,80,1));
+  border-radius:50rpx;
+  color: #fff;
+  font-size:36rpx;
+  line-height: 100rpx;
+}
+
+.sub-button{
+  width:200rpx;
+  height:80rpx;
+  background:rgba(209,82,111,1);
+  color: #fff;
+  font-size:32rpx;
+  line-height: 80rpx;
+  border-radius:40rpx;
+}
+
+.red-color{
+  color:#EA5252 !important;
+}
+.active-color{
+  color: #FF4E50 !important;
+}

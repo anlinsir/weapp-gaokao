@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "Dropdown":"/component/Dropdown/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "考前预测",
+  "navigationBarTextStyle": "white"
+}

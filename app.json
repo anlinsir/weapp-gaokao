@@ -1,0 +1,73 @@
+{
+    "pages": [
+
+        "pages/login/index",
+        "pages/login/two",
+        "pages/voluntPredict/index",
+        "pages/index/index",
+        "pages/characterTest/index",
+        "pages/characterTest/Detail",
+        "pages/proDetail/index",
+        "pages/stuDetail/index",
+        "pages/universityQuery/index",
+
+        "pages/professionalInto/index",
+        "pages/user/index",
+        "pages/EXAinformation/index",
+        "pages/EXAinformation/two",
+        "pages/testPredictions/index",
+        "pages/testPredictions/two",
+        "pages/VPSubjectIn/school",
+        "pages/vip/index",
+        "pages/VPSubjectIn/index",
+        "pages/vip/pay",
+
+        "pages/login/subjects",
+
+
+
+        "pages/universityQuery/school",
+        "pages/universityQuery/major",
+        "pages/universityQuery/batchline",
+
+        "pages/register/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#000000",
+        "selectedColor": "#292C35",
+        "backgroundColor": "#FFFFFF",
+        "borderStyle": "black",
+        "list": [{
+                "iconPath": "/static/tabbar/1.png",
+                "selectedIconPath": "/static/tabbar/1a.png",
+                "pagePath": "pages/voluntPredict/index",
+                "text": "志愿测评"
+            },
+            {
+                "selectedIconPath": "/static/tabbar/2a.png",
+                "iconPath": "/static/tabbar/2.png",
+                "pagePath": "pages/testPredictions/index",
+                "text": "考前预测"
+            },
+            {
+                "selectedIconPath": "/static/tabbar/3a.png",
+                "iconPath": "/static/tabbar/3.png",
+                "pagePath": "pages/universityQuery/index",
+                "text": "高校搜索"
+            },
+            {
+                "selectedIconPath": "/static/tabbar/4a.png",
+                "iconPath": "/static/tabbar/4.png",
+                "pagePath": "pages/user/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
+}

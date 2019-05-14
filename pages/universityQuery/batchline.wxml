@@ -1,0 +1,70 @@
+<view style='background:rgba(245,245,245,1);' class='down-menu text-center main-text-color'>
+  <view bindtap='changeAddressStatus' data-id="1" class='menu-item'>
+    <text data-id="1">所在地</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+  <view  bindtap='changeAddressStatus' data-id="2" class='menu-item'>
+    <text data-id="2">{{examinationBatchChoose?examinationBatch[examinationBatchChoose - 1].name:'年份'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+  <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
+    <text data-id="3">{{probabilityID?probabilityList[probabilityID - 1].name:'文理'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+
+<view  hidden="{{showAddress != 1}}"  class='K-address-box'>
+  <view class='K-address'>
+    <view wx:key="{{item}}"
+     class="{{activeAddress[item] ? 'activeAddress item' : 'item'}}" data-id="{{item}}"           bindtap='getAddress' wx:for="{{32}}" >全国</view>
+  </view>
+
+  <view class='function-box '>
+    <view class='sub-text-color'>*可多选</view>
+    <button data-id="1"  bindtap='changeAddressStatus' class='main-button'>确定</button>
+  </view>
+</view>
+
+
+<view hidden="{{showAddress != 2}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view style="color:{{examinationBatchChoose == item.id ?'#FF4E50':''}}" bindtap='BatchChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
+  </view>
+
+</view>
+
+<view hidden="{{showAddress != 3}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view  style="color:{{probabilityID == item.id ?'#FF4E50':''}}" bindtap='probabilityChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{probabilityList}}"  class="P-box-item">{{item.name}}</view>
+  </view>
+
+</view>
+
+</view>
+
+
+<view class='Details-box'>
+  <view class='Details'>
+
+    <view class='details-title flex'>
+      <view class='views sub-text-color'>录取批次</view>
+      <view class='views sub-text-color'>分数线</view>
+    </view>
+
+    <view class='flex'>
+      <view class='views main-text-color'>第一批次</view>
+      <view class='views main-text-color'>700</view>
+    </view>
+
+    <view class='flex'>
+      <view class='views main-text-color'>第二批次</view>
+      <view class='views main-text-color'>400</view>
+    </view>
+
+    <view class='flex'>
+      <view class='views none main-text-color'>第三批次</view>
+      <view class='views none main-text-color'>111</view>
+    </view>
+
+  </view>
+</view>

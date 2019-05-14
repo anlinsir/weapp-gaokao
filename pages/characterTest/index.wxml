@@ -1,0 +1,14 @@
+<view class="top-title">
+  为保证测评准确性，请完成以下测评！
+</view>
+
+<view bindtap='toTestPageDetail' wx:for="{{2}}" class='test-part-item flex f-b'>
+  <image  class='test-icon' src='../../static/tabbar/111.png'></image>
+  <view class='test-text'>
+    <view  class='test-text-title'>测试1</view>
+    <view class='test-text-desc'>用科学设计的量表来测量观察不到的人格结构，也被称为潜变量测试。 通俗而言，心理测试是指通过一系列的科学方法来测量被评者的智力水平和个性方面差异的一种科学方法。
+    <text class='toTest active-color'>去测试>>></text>
+    </view>
+  </view>
+</view>
+<button bindtap='testconfrim' class='main-button'>志愿推荐</button>

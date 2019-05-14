@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "SchoolItem": "/component/schoolItem/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "专业名称",
+  "navigationBarTextStyle": "white"
+}

@@ -1,0 +1,7 @@
+<!--component/noVip/noVip.wxml-->
+
+<view class='buy-vip-tips '>
+  <view>已为您推荐了<text class='red-text'>XX</text>所高校</view>
+  <view >开通<text class='red-text'>VIP</text>查看更多志愿推荐！</view>
+  <button bindtap='toVipPage' class='sub-button'>立即开通</button>
+</view>

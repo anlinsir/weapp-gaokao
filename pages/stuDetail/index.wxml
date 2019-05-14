@@ -1,0 +1,103 @@
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{urlId==0 ? 'on' : ''}}" bindtap='toSomePage' data-id="0">学校简介</view>
+  <view class="swiper-tab-list {{urlId==1 ? 'on' : ''}}"  bindtap='toSomePage' data-id="1">录取情况</view>
+</view>
+
+
+<swiper current="{{urlId}}" class="swiper-box" duration="300"  >
+  <swiper-item style="overflow:auto">
+
+    <view>
+      <view class='item-box'>
+        <image class='school-icon' src='{{schoolDetail.logo}}'></image>
+        <view class='scholl-info'>
+          <view class='line-1'>
+            <text>{{schoolDetail.name}}</text>
+          </view>
+
+          <view class='line-3'>
+            <view class='tags'>在线</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class='stu-textInfo sub-text-color'>
+        四川师范大学（SICHUAN NORMAL UNIVERSITY），简称川师，位于素有“天府之国”之称的国家历史文化名城成都市，国家 中西部高校基础能力建设工程 重点建设大学，入选“卓越教师培养计划 ” 、四川省“2011计划”、“四川省卓越法律人才培养计划”、四川省“卓越工程师教育培养计划”，是四川省举办师范类本科专业最早、师范类院校中办学历史最为悠久的省属重点大学，也是四川省乃至西南地区培养教师的摇篮。
+    </view>
+  </swiper-item>
+  <swiper-item style="overflow:auto">
+
+     <view>
+        <view class='part-item'>
+          <view class='_title'>院校分数线</view>
+          <view class='_box'>
+          <view class='table-head flex'>
+            <view class='_item'>年份</view>
+            <view class='_item'>最高分</view>
+            <view class='_item'>最低分</view>
+            <view class='_item'>平均分</view>
+            <view class='_item'>最低位次</view>
+          </view>   
+
+          <view wx:for="{{collegeScores}}" wx:key="{{item.id}}" class='table-body flex'>
+            <view class='_item'>{{item.year}}</view>
+
+            <view  class='_item'>{{item.high_score}}</view>
+            <view  class='_item'>{{item.low_score}}</view>
+            <view  class='_item'>{{item.avg_score}}</view>
+            <view  class='_item'>{{item.low_ranking}}</view>
+
+
+          </view>
+
+          
+
+            
+          </view>
+        </view>
+
+
+        <view class='part-item'>
+          <view class='_title flex '>
+            <text>专业录取分数线</text>
+            <view catchtap='changeyearListBox' class='pull-down'>
+              <text>{{yearListId === 0 ? yearList[yearListId]: yearList[yearListId] + '年'}}</text>
+              <image class='pull-down-icon' src='../../static/voluntPredict/down.png'></image>
+              <view wx:if="{{yearListBox}}" class='pull-down-list'>
+                <view catchtap='changeyearList' wx:for="{{yearList}}" data-id="{{index}}" wx:key="{{index}}" class='.pull-down-list-item'>{{item}}</view>
+              </view>
+            </view>
+
+            <view catchtap='changebranchSubjectBoxShow' class='pull-down'>
+              <text>{{branchSubject[branchSubjectId]}}</text>
+              <image class='pull-down-icon' src='../../static/voluntPredict/down.png'></image>
+              <view wx:if="{{branchSubjectBoxShow}}" class='pull-down-list'>
+                <view catchtap='changebranchSubject' data-id="{{index}}" wx:for="{{branchSubject}}" wx:key="{{item}}" class='.pull-down-list-item'>{{item}}</view>
+              </view>
+            </view>
+          </view>
+
+           <view class='table-head flex'>
+            <view class='_item'>专业</view>
+            <view class='_item'>最高分</view>
+            <view class='_item'>最低分</view>
+            <view class='_item'>平均分</view>
+            <view class='_item'>最低位次</view>
+          </view>   
+
+          <view wx:for="{{majorScores}}" wx:key="{{item.id}}" class='table-body flex'>
+            <view class='_item'>{{item.major}}</view>
+
+            <view  class='_item'>{{item.high_score}}</view>
+            <view  class='_item'>{{item.low_score}}</view>
+            <view  class='_item'>{{item.avg_score}}</view>
+            <view  class='_item'>{{item.low_ranking}}</view>
+
+          </view>
+        </view>
+
+      </view>
+  </swiper-item>
+</swiper>

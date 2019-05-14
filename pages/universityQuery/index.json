@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "School": "./school",
+    "Major": "./major",
+    "Batchline": "./batchline",
+    "Dropdown": "/component/Dropdown/index",
+    "i-collapse": "/component/collapse/index",
+    "i-collapse-item": "/component/collapse-item/index",
+    "icon": "/component/icon/index",
+    "Profession": "/component/profession/index",
+    "newSchoolItem": "/component/newSchoolItem/index",
+    "i-load-more": "/iview/load-more/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "高校搜索",
+  "navigationBarTextStyle": "white"
+  
+}

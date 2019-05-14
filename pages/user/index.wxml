@@ -1,0 +1,43 @@
+<view class='user-info-box'>
+<image class='user-bgs' src='../../static/tabbar/userbg.png'></image>
+
+  <view class='user-info flex'>
+    <view class='user-img'>
+     <image src='{{userInfo.avatar}}'></image>
+    </view>
+
+    <view style='margin-top:10rpx'>
+       <view style='font-size:32rpx;color:#FEFEFE;margin-bottom:30rpx'>{{userInfo.nickname}}</view>
+       <view style='font-size:30rpx;color:#FEFEFE'>{{userInfo.mobile || '暂无手机号'}}</view>
+    </view>
+
+    
+  </view>
+
+  <view class='vip-boxs'>
+    <view class='vip-box'>
+      <image class="{{userInfo.vip_level < 1 ? 'graycale-100' : ''}}" src='../../static/vip/vip1.png'></image>
+      <image class="{{userInfo.vip_level < 2 ? 'graycale-100' : ''}}" src='../../static/vip/vip2.png'></image>
+      <image class="{{userInfo.vip_level < 3 ? 'graycale-100' : ''}}" src='../../static/vip/vip3.png'></image>
+    </view>
+  </view>
+
+  
+
+</view>
+
+
+<view class='user-menu'>
+  <view bindtap='toUserInfo' class='user-menu-item'>
+    <image class='item-icon item-icon-stu-info' src='../../static/tabbar/stuinfo.png'></image>
+    <image class='right-arrwor' src='../../static/tabbar/right.png'></image>
+
+    <text>考生信息</text>
+  </view>
+
+  <view bindtap='toVIP' class='user-menu-item'>
+    <image class='item-icon item-icon-open-vip' src='../../static/tabbar/openvip.png'></image>
+    <image class='right-arrwor' src='../../static/tabbar/right.png'></image>
+    <text>开通VIP</text>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+/* pages/VPSubjectIn/index.wxss */
+Page{
+  padding: 0 55rpx;
+  box-sizing: border-box;
+  background:rgba(245,245,245,1);
+}
+
+input.subScore{
+  height:100rpx;
+  background:rgba(255,255,255,1);
+  border-radius:50rpx;
+  margin-bottom: 40rpx;
+  text-align: center;
+  color: #666;
+  font-size: 32rpx;
+}
+input::placeholder{
+  color:rgba(153,153,153,1);
+}
+
+.total-score{
+  margin-top: 100rpx;
+}

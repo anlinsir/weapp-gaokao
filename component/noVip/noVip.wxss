@@ -1,0 +1,27 @@
+/* component/noVip/noVip.wxss */
+.buy-vip-tips{
+  width: 100%;
+  height: 400rpx;
+  background:rgba(245,245,245,1);
+  box-sizing: border-box;
+  padding-top: 118rpx;
+  color: #666;
+  font-size: 32rpx;
+  text-align: center
+}
+.red-text{
+  color: #EA5252;
+}
+button{
+  margin-top: 30rpx; 
+}
+
+.sub-button{
+  width:200rpx;
+  height:80rpx;
+  background:rgba(209,82,111,1);
+  color: #fff;
+  font-size:32rpx;
+  line-height: 80rpx;
+  border-radius:40rpx;
+}

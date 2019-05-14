@@ -1,0 +1,64 @@
+<!-- <view class="swiper-tab">
+  <view class="swiper-tab-list {{urlId==0 ? 'on' : ''}}" bindtap='toSomePage' data-id="0">学校简介</view>
+  <view class="swiper-tab-list {{urlId==1 ? 'on' : ''}}"  bindtap='toSomePage' data-id="1">录取情况</view>
+</view> -->
+
+
+<!-- <swiper current="{{urlId}}" class="swiper-box" duration="300"  >
+  <swiper-item>
+
+    <SchoolItem />
+
+    <view class='stu-textInfo sub-text-color'>
+        四川师范大学（SICHUAN NORMAL UNIVERSITY），简称川师，位于素有“天府之国”之称的国家历史文化名城成都市，国家 中西部高校基础能力建设工程 重点建设大学，入选“卓越教师培养计划 ” 、四川省“2011计划”、“四川省卓越法律人才培养计划”、四川省“卓越工程师教育培养计划”，是四川省举办师范类本科专业最早、师范类院校中办学历史最为悠久的省属重点大学，也是四川省乃至西南地区培养教师的摇篮。
+    </view>
+  </swiper-item> -->
+  <!-- <swiper-item> -->
+      <view>
+        <view class='part-item'>
+          <view class='_title'>基本信息</view>
+          <view class='_box'>
+            <view class='_item'>专业名称：经济统计学</view>
+            <view class='_item'>专业名称：经济统计学</view>
+            <view class='_item'>专业名称：经济统计学</view>
+            <view class='_item'>专业名称：经济统计学</view>
+          </view>
+        </view>
+
+
+        <view class='part-item'>
+          <view class='_title'>开设院校</view>
+          <view class='schoolList'>
+            <!--component/schoolItem/index.wxml-->
+              <view class='item-box'>
+                <image class='school-icon' src='{{logo}}'></image>
+                <view class='scholl-info'>
+                  <view class='line-1'>
+                    <text>开设院校</text>
+                    <!-- <image src='../../static/voluntPredict/recommend.png'></image> -->
+                    <image src='../../static/voluntPredict/tops.png'></image>
+                  </view>
+
+                  <view class='line-2'>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+                   <text>专业1</text>
+
+                  </view>
+                </view>
+              </view>
+
+          </view>
+        </view>
+
+
+      </view>
+    
+  <!-- </swiper-item> -->
+<!-- </swiper> -->

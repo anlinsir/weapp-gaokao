@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "action-sheet": "/component/action-sheet/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "高考志愿",
+  "navigationBarTextStyle": "white"
+}

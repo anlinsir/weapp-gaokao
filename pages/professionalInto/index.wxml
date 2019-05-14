@@ -1,0 +1,10 @@
+<Profession  
+SubsubmajorsList="{{SubsubmajorsList}}" 
+submajorsList="{{submajorsList}}" 
+bind:changeMajors="changeMajors" 
+bind:changeSubMajors="changeSubMajors"
+majorsList="{{majorsList}}"
+name='{{name}}'
+bind:changePages="changePages"
+types="{{2}}"
+ />

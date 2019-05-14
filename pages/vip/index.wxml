@@ -1,0 +1,41 @@
+<!--pages/vip/index.wxml-->
+<view class='top-img'>
+  <image src='../../static/vip/banner2.png'></image>
+</view>
+
+<view class='price-box'>
+  <view class='price-item'>
+    <image src='../../static/vip/vip1.png'></image>
+    <view  class='flex '>
+       <text class='info'>购买后开通<text class='main'>志愿测评</text>功能</text>
+       <text  class='price'><text class='symbol'>￥</text>250</text>
+       <button bindtap='PAY' data-id="2"  class='buy-now'>立即购买</button>
+    </view>
+  </view>
+
+  <view class='price-item'>
+    <image src='../../static/vip/vip2.png'></image>
+    <view  class='flex  '>
+       <text class='info'>购买后开通<text class='main'>考前预测</text>功能</text>
+       <text  class='price'><text class='symbol'>￥</text>50</text>
+       <button bindtap='PAY' data-id="1" class='buy-now'>立即购买</button>
+    </view>
+  </view>
+
+  <view class='price-item'>
+    <image src='../../static/vip/vip3.png'></image>
+    <view  class='flex '>
+       <text class='info'>购买后开通<text class='main'>所有</text>功能</text>
+       <text  class='price'><text class='symbol'>￥</text>280</text>
+       <button bindtap='PAY'  data-id="3" class='buy-now'>立即购买</button>
+    </view>
+  </view>
+
+</view> 
+
+<view class='share-discount text-center'>
+  <view >分享后立享<text class='red-color'>7</text>折！</view>
+  <view >
+    <button>立即分享</button>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<!--component/schoolItem/index.wxml-->
+<view class='item-box'>
+  <image class='school-icon' src='{{logo}}'></image>
+  <view class='scholl-info'>
+    <view class='line-1'>
+      <text>{{Sname}}</text>
+    </view>
+
+    <view class='line-2'>
+      <text class='i'>所在地：四川</text>
+      <text>录取批次：56</text>
+      <text class='i'>高效类型：102</text>
+    </view>
+
+    <view class='line-3'>
+      <view class='tags'>在线</view>
+    </view>
+  </view>
+</view>

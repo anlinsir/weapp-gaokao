@@ -1,0 +1,30 @@
+<!--pages/vip/pay.wxml-->
+<view class='production-list flex f-b'>
+  <image src='../../static/vip/vip1.png'></image>
+  <text>购买后开通志愿测评功能</text>
+  <text class='red-color price'><text class='symbol'>￥</text>250</text>
+</view>
+
+
+<view class='_item'>
+  <text>电话号码</text>
+  <view>13980552337</view>
+</view> 
+
+<view class='_item'>
+  <text>支付方式</text>
+  <view class='flex f-c'>
+    <image class='wxpay' src='../../static/vip/wxpay.png'></image>
+    <text>微信支付</text>
+  </view>
+</view> 
+
+
+<view class='bom-zusamm-price flex '>
+  <view>
+    <text style='color:#999;'>总价：</text>
+    <text>￥</text>
+    <text style='font-size:50rpx;'>250</text>
+  </view>
+  <button  class='white'>提交订单</button>
+</view>

@@ -1,0 +1,63 @@
+/* pages/voluntPredict/index.wxss */
+/* .scoll{
+  width: 100%;
+  height: 300rpx;
+  background-color: red;   
+	position: absolute;   
+	z-index: 50;   
+	top: -0rpx; 
+}
+.prant{
+  position: relative;
+}
+ @keyframes slidown {   
+ 	from {     transform: translateY(0%);   }   
+ 	to {     transform: translateY(100%);   } 
+ } 
+ .slidown {   
+ 	display: block;   
+   background-color: #fff;
+ 	animation: slidown 0.3s ease-in both; 
+ } 
+ @keyframes slidup {   
+ 	from { transform: translateY(100%); }   
+ 	to { transform: translateY(0%); } 
+} 
+.slidup {  
+	display: block;   
+	animation: slidup 0.2s ease-in both; 
+}  */
+
+
+Page{
+  
+}
+.top-imgs{
+  width: 100%;
+  height: 400rpx;
+  background:rgba(220,220,220,1);
+  border-bottom: 20rpx  solid rgba(245,245,245,1);
+}
+
+.choose-box{
+  background-color: #fff;
+}
+
+.choose-item{
+  width:750rpx;
+  height:170rpx;
+  border-bottom:10rpx solid rgba(245,245,245,1);
+  font-size: 32rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-left: 24rpx;
+}
+.choose-item .sub-text-color{
+  font-size: 28rpx;
+}
+
+.choose-item image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 40rpx;
+}

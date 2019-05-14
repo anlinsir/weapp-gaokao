@@ -1,0 +1,94 @@
+/* pages/vip/index.wxss */
+
+.top-img{
+  width:750rpx;
+  height:400rpx;
+  background:rgba(233,233,233,1);
+  position: relative;
+}
+.top-img image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.price-box{
+  min-height: 100rpx;
+  width:750rpx;
+  background:rgba(245,245,245,1);
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.price-item{
+  width: 100%;
+  height:170rpx;
+  margin-top: 10rpx;
+  background:linear-gradient(90deg,rgba(239,185,139,0.3),#fff);
+  position: relative;
+  padding-top: 65rpx;
+  box-sizing: border-box;
+}
+.price-item image{
+  width: 120rpx;
+  height: 40rpx;
+  position: absolute;
+  top:20rpx;
+  left: 0rpx;
+}
+.price-item .info{
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:4px;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+.price-item .info .main{
+ color: #EA5252;
+}
+.price-item .price{
+  font-size: 50rpx;
+  color: #EA5252;
+}
+.price-item .price .symbol{
+  font-size: 32rpx;
+}
+.price-item  button{
+  width:200rpx;
+  height:80rpx;
+  background:rgba(209,82,111,1);
+  border-radius:40rpx;
+  font-size:26rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height: 80rpx;
+  transform: translateY(-5rpx);
+}
+
+.price-item >.flex{
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.share-discount{
+  height: 246rpx;
+  background-color: #fff;
+  padding-top: 74rpx;
+  box-sizing: border-box;
+  color: #666;
+  font-size:32rpx;
+}
+
+.share-discount button {
+  font-size:32rpx;
+  font-weight:400;
+  color:rgba(209,82,111,1);
+  width:200rpx;
+  margin-top: 18rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  border:2rpx solid rgba(209,82,111,1);
+  border-radius:40rpx;
+}

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-collapse": "/component/collapse/index",
+    "i-collapse-item": "/component/collapse-item/index",
+    "icon": "/component/icon/index",
+    "Profession": "/component/profession/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "专业录入",
+  "navigationBarTextStyle": "white"
+}

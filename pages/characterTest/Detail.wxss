@@ -1,0 +1,101 @@
+
+
+Page{
+ padding-top:251rpx;
+}
+
+.backImg{
+  width: 750rpx;
+  height: 305rpx;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.quiz-box{
+  padding: 0 25rpx;
+  box-sizing: border-box;
+  color: #666666;
+  font-size: 32rpx;
+}
+.quiz-title{
+  margin-bottom: 76rpx;
+}
+.quiz-answer{
+  margin-left: 25rpx;
+}
+
+
+
+.swiper-tab {
+  width: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  position: relative;
+  z-index: 50;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: #797979;
+}
+
+.on {
+  color: #FBA97F;
+  position: relative;
+  /* border-bottom: 5rpx solid; */
+}
+.on::after{
+  content: '';
+  width:60rpx;
+  height: 4rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background-color: #FBA97F;
+}
+
+.swiper-box {
+  display: block;
+  min-height: 700rpx;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ctrl-page{
+  font-size: 32rpx;
+  
+  margin-left: 52rpx;
+}
+.ctrl-page text{
+  margin: 0 20rpx;
+}
+.cuurentPage{
+  position: fixed;
+  z-index: 12;
+  font-size: 34rpx;
+  color: #FEFEFE;
+  top:46rpx;
+  right: 51rpx;
+}
+.testover{
+  width: 89rpx;
+  height: 89rpx;
+}
+
+.over-icon{
+  align-items: center;
+  font-size: 44rpx;
+  margin-top: 140rpx;
+  color: #FBAB7E;
+}
+.over-icon image{
+  margin-right: 33rpx;
+}
+.test-over-btn{
+  margin-top: 231rpx;
+  width:640rpx;
+}

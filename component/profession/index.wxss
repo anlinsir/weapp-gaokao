@@ -1,0 +1,81 @@
+Page {
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-tab {
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.swiper-tab-list {
+  font-size: 32rpx;
+  display: inline-block;
+  width: 50%;
+  color: #797979;
+}
+
+.on {
+  color: #FF4E50;
+  position: relative;
+  /* border-bottom: 5rpx solid; */
+}
+.on::after{
+  content: '';
+  width:60rpx;
+  height: 4rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background-color: #FF4E50;
+}
+
+.swiper-box {
+  display: block;
+  min-height: 500px;
+  width: 100%;
+  overflow: hidden;
+  flex: 1;
+}
+.benkle-box{
+  height: 100%;
+  display: flex;
+}
+.benkle{
+  text-align: center;
+  height: 100%;
+  min-width:330rpx;
+  margin-right: 40rpx;
+  overflow:auto;
+  background:rgba(245,245,245,1);
+  font-size: 32rpx;
+  color: #666;
+}
+.benkle-item,.benkle-item-active{
+   min-width: 330rpx;
+   height: 100rpx;
+   line-height: 100rpx;
+}
+.benkle-item-active{
+  background:rgba(255,255,255,1);
+}
+
+.caption-wrap{
+  font-size: 32rpx;
+  color: #999;
+  width:100%;
+  overflow: auto;
+}
+.collapse-item{
+  padding-left: 40rpx;
+  color: #999;
+  height: 60rpx;
+  line-height: 60rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

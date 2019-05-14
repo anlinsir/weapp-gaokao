@@ -1,0 +1,187 @@
+<!--pages/universityQuery/index.wxml-->
+
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{urlId==0 ? 'on active-color' : ''}}" bindtap='toSomePage' data-id="0">查学校</view>
+  <view class="swiper-tab-list {{urlId==1 ? 'on active-color' : ''}}"  bindtap='toSomePage' data-id="1">查专业</view>
+  <view class="swiper-tab-list {{urlId==2 ? 'on active-color' : ''}}"  bindtap='toSomePage' data-id="2">批次线</view>
+</view>
+
+
+
+
+<swiper bindchange='changeSwiper' current="{{urlId}}" class="swiper-box" duration="300"  >
+  <swiper-item style="overflow:auto;position:relative">
+    <!--pages/universityQuery/school.wxml-->
+<view class='search-box flex f-c'>
+  <input placeholder='输入学校名字'></input>
+  <image src='../../static/tabbar/search.png'></image>
+</view>
+
+<!-- <view class='fixed' hidden="{{showAddress <= 0}}"></view> -->
+<view class='down-menu text-center main-text-color'>
+  <view  bindtap='changeAddressStatus' data-id="1" class='menu-item nowarp'>
+    <text >
+      <text  wx:if="{{activeAddressNum > 0}}" wx:for="{{activeAddress}}">{{item }}</text>
+    </text>
+    <text wx:if="{{activeAddressNum <=  0}}" data-id="1">高校地址</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+  <view bindtap='changeAddressStatus' data-id="2" class='menu-item'>
+    <text data-id="1">{{schoolTypeList[typeId].name  || '高校类型'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+  <view bindtap='changeAddressStatus' data-id="1" class='menu-item'>
+    <text data-id="1">高校标签</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+  <view  bindtap='changeAddressStatus' data-id="4" class='menu-item'>
+    <text data-id="2">{{examinationBatch[examinationBatchChoose].name || '录取批次'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+
+
+<view  hidden="{{showAddress != 1}}"  class='K-address-box'>
+  <view class='K-address'>
+     <view wx:key="{{item}}"
+     class="{{activeAddress[index] ? 'activeAddress item' : 'item'}}" data-name="{{item.name}}" data-id="{{index}}"  bindtap='getAddress'  wx:for="{{areaslist}}" >{{item.name}}</view>
+  </view>
+
+  <view class='function-box '>
+    <view class='sub-text-color'>*可多选</view>
+    <button data-id="1"  bindtap='changeAddressStatus' class='main-button'>确定</button>
+  </view>
+</view>
+
+
+<view hidden="{{showAddress != 2}}" class='P-box' >
+  <view class='P-box-warp'  style='height:500rpx;overflow:auto;' >
+    <view style="color:{{typeId == index ?'#FBA97F':''}}" bindtap='typeChoose' data-id="{{index}}" wx:key="{{index}}" wx:for="{{schoolTypeList}}" class="P-box-item">{{item.name}}</view>
+  </view>
+</view>
+
+
+<view hidden="{{showAddress != 4}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view style="color:{{examinationBatchChoose == index ?'#FBA97F':''}}" bindtap='BatchChoose' data-id="{{index}}" wx:key="{{index}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+</view>
+
+<newSchoolItem
+  wx:for="{{schoolList}}"
+  wx:key="{{item.id}}"
+  data-id="{{item.id}}"
+  Sname="{{item.name}}"
+  logo="{{item.logo}}"
+  bindtap="toStuDetail"
+ 
+ />
+ <view hidden="{{!loading && schoolList.length==0}}">
+    <i-load-more tip="{{ schoolList.length>0&&!loading?'暂无更多数据':'' }}" loading="{{ loading }}" />      
+ </view>
+
+ <view wx:if="{{!loading && schoolList.length==0}}">
+    <i-load-more tip="{{ schoolList.length == 0 && !loading?'暂无数据':'' }}" loading="{{ loading }}" />      
+ </view>
+
+  </swiper-item>
+  <swiper-item >
+    <Profession  
+        SubsubmajorsList="{{SubsubmajorsList}}" 
+        submajorsList="{{submajorsList}}" 
+        bind:changeMajors="changeMajors" 
+        bind:changeSubMajors="changeSubMajors"
+        majorsList="{{majorsList}}"
+        name='{{name}}'
+        />
+  </swiper-item>
+  <swiper-item>
+   <view style='background:rgba(245,245,245,1);' class='down-menu text-center main-text-color'>
+  <view  bindtap='changeAddressStatus' data-id="1" class='menu-item nowarp'>
+    <text >
+      <text  wx:if="{{SactiveAddressNum > 0}}" wx:for="{{SactiveAddress}}">{{item }}</text>
+    </text>
+    <text wx:if="{{SactiveAddressNum <=  0}}" data-id="1">所在地</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+    </view>
+  <view  bindtap='changeAddressStatus' data-id="2" class='menu-item'>
+    <text data-id="2">{{yearList[yearListId]? yearList[yearListId] :'年份'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+  <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
+    <text data-id="3">{{probabilityID?probabilityList[probabilityID - 1].name:'录取概率'}}</text>
+    <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+  </view>
+
+
+<view  hidden="{{showAddress != 1}}"  class='K-address-box'>
+  <view class='K-address'>
+     <view wx:key="{{item}}"
+     class="{{SactiveAddress[index] ? 'activeAddress item' : 'item'}}" data-name="{{item.name}}" data-id="{{index}}"   bindtap='SgetAddress'  wx:for="{{Sareaslist}}" >{{item.name}}</view>
+  </view>
+
+  <view class='function-box '>
+    <view class='sub-text-color'>*可多选</view>
+    <button data-id="1"  bindtap='changeAddressStatus' class='main-button'>确定</button>
+  </view>
+</view>
+
+
+<view hidden="{{showAddress != 2}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view style="color:{{yearListId == index ?'#FF4E50':''}}" bindtap='yearChoose' data-id="{{index}}" wx:key="{{index}}" wx:for="{{yearList}}" class="P-box-item">{{item}}</view>
+  </view>
+
+</view>
+
+<view hidden="{{showAddress != 3}}" class='P-box' >
+  <view class='P-box-warp'>
+    <view  style="color:{{probabilityID == item.id ?'#FF4E50':''}}" bindtap='probabilityChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{probabilityList}}"  class="P-box-item">{{item.name}}</view>
+  </view>
+
+</view>
+
+</view>
+
+
+<view class='Details-box'>
+  <view class='Details'>
+
+    <view class='details-title flex'>
+      <view class='views sub-text-color'>录取批次</view>
+      <view class='views sub-text-color'>分数线</view>
+    </view>
+
+    <view class='flex'>
+      <view class='views main-text-color'>第一批次</view>
+      <view class='views main-text-color'>700</view>
+    </view>
+
+    <view class='flex'>
+      <view class='views main-text-color'>第二批次</view>
+      <view class='views main-text-color'>400</view>
+    </view>
+
+    <view class='flex'>
+      <view class='views none main-text-color'>第三批次</view>
+      <view class='views none main-text-color'>111</view>
+    </view>
+
+  </view>
+</view>
+  </swiper-item>
+</swiper>
+

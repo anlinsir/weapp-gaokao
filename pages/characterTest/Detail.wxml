@@ -1,0 +1,32 @@
+<image class="backImg" src="../../static/tabbar/testbg.png"></image>
+<view class='cuurentPage'>{{urlId + 1}}/{{swiperNum+1}}</view>
+
+<swiper bindchange="changeSwiper" current="{{urlId}}" class="swiper-box" duration="300"  >
+  <swiper-item wx:key="{{item}}" wx:for="{{subjectlist }}">
+    <view  class='quiz-box'>
+      <view class='quiz-title'>{{index + 1}}.{{item.title}}：</view>
+      <view class='quiz-answer'>
+        <i-radio-group data-id="{{index}}" current="{{subjectresult[index]}}"  bindchange="handleFruitChange" >
+            <i-radio wx:for-index="idx"  data-id="{{idx}}"  color="#FF4E50" wx:for="{{item.options}}" position="{{position}}" wx:key="{{item.weight}}" value="{{item.title}}">
+            </i-radio>
+        </i-radio-group>
+      </view>
+    </view>
+  </swiper-item>
+
+  <swiper-item>
+      <view class='flex f-c over-icon'>
+        <image class='testover' src='../../static/tabbar/testover.png'></image>
+        <text>完成测评！</text>
+      </view>
+     <view class='text-center'>
+      <button bindtap='testconfrim' class='test-over-btn main-button'>确定</button></view>
+  </swiper-item>
+
+
+</swiper>
+
+<view hidden="{{urlId >= swiperNum}}" class='ctrl-page active-color'>
+  <text bindtap='subIndex '>上一题</text>
+  <text bindtap='addIndex'>下一题</text>
+</view>

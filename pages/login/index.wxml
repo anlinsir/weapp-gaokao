@@ -1,0 +1,46 @@
+<!--pages/login/index.wxml-->
+<image class='backBI' src='/static/login/loginbg.png'></image>
+
+
+
+
+<view class='login-from mid'>
+ <view class='title-text text-center'>高考志愿</view>
+
+  <picker bindchange="bindPickerChange" value="{{branchSubjectindex}}" range="{{branchSubject}}">
+      <view class='menu-down text-center'>
+        <text>{{branchSubject[branchSubjectindex] ? branchSubject[branchSubjectindex] :'文/理科'}}</text>
+        <image class='down-icon' src='../../static/voluntPredict/down.png'></image>
+      </view>
+  </picker>
+
+
+  <picker bindchange="provincebindPickerChange" value="{{provinceIndex}}"  range-key="name"   range="{{areaslist}}">
+      <view class='menu-down text-center'>
+        <text>{{areaslist[provinceIndex].name}}</text>
+        <image class='down-icon' src='../../static/voluntPredict/down.png'></image>
+      </view>
+  </picker>
+  
+  
+
+  <button bindgetuserinfo="loginNext" open-type="getUserInfo" class='text-center main-button white'>
+  下一步
+  </button>
+
+</view>
+
+  <!-- <action-sheet i-class="share" visible="{{ shareShow }}" bind:cancel="picCancel">
+    <view class="choose_all" slot="header"  >
+          <view class="expected_number_of_visitors">选择考试类型</view>
+          
+          <view style='text-align:left'>
+          dtysfydusgufjid
+          </view>
+          
+    </view>
+</action-sheet> -->
+<view class="section">
+  <view class="section__title">普通选择器</view>
+  
+</view>

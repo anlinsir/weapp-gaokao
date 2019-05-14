@@ -1,0 +1,13 @@
+<view class='subjectsScores '>
+  <view class='sub-title text-center'>{{mockItem}}模</view>
+  <view class='tips-text main-text-color'>录入每科成绩，测评结果更精准哦！(非必填)</view>
+    
+    <input value="{{chinese}}" bindinput="changeData" data-type="chinese"  placeholder='语文成绩' class='scoresInput'></input>
+    <input value="{{mathematics}}" bindinput="changeData" data-type="mathematics" placeholder='数学成绩' class='scoresInput'></input>
+    <input value="{{english}}" bindinput="changeData" data-type="english" placeholder='英语成绩' class='scoresInput'></input>
+    <input value="{{average}}" bindinput="changeData" data-type="average" placeholder='{{ComprehensiveType}}成绩' class='scoresInput'></input>
+
+    <button bindtap='toVoluntPage' class='main-button'>确定</button>
+  
+
+</view>

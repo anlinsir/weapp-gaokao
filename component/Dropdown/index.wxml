@@ -1,0 +1,15 @@
+<view class="content-container">   
+<view class="pick-header" bindtap="onPickHeaderClick">全部机构z-index:60 </view> 
+  <view     class="pick-container {{needAnimation?(openPicker?'slidown':'slidup'):''}}">  
+  <!-- 下句：是遍历data中的orgList数组，
+ 里面的每一项起别名叫item（默认就是item），可自定义命名 。
+ -->       
+  <block wx:key="item" wx:for="{{orgList}}" wx:for-item="item">    
+  <view data-id="{{index}}" bindtap='clickPick'>    
+  <!-- 选中时，用三元表达式将选中项标记-改变颜色 --> 
+  <text style="{{index == itemId?'color:#1ecc8b':''}}">{{item.Name}} </text>    </view>    
+  </block>  
+  </view>   
+  <!-- <view class="shadow" hidden="{{!openPicker}}"></view>    -->
+  
+  </view> 

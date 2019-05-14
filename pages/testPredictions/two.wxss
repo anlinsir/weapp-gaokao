@@ -1,0 +1,34 @@
+Page{
+  background:rgba(245,245,245,1);
+  text-align: center;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+}
+.subjectsScores{
+  width: 100%;
+  padding-top: 75rpx;
+}
+.tips-text{
+  font-size:28rpx;
+}
+.sub-title{
+  margin-bottom: 50rpx;
+}
+.scoresInput{
+  width:640rpx;
+  height:100rpx;
+  background:rgba(255,255,255,1);
+  border:1px solid rgba(226, 226, 226, 1);
+  opacity:0.9;
+  line-height: 100rpx;
+  margin-top: 40rpx;
+  border-radius:50rpx;
+}
+.scoresInput::placeholder{
+  font-size: 32rpx;
+  color:rgba(153,153,153,1);
+}
+
+.main-button{
+  margin-top: 70rpx;
+}

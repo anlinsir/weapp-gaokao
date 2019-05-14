@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-radio-group": "/component/radio-group/index",
+    "i-radio": "/component/radio/index",
+    "i-cell-group": "/component/cell-group/index",
+    "i-cell": "/component/cell/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "性格测试",
+  "navigationBarTextStyle": "white"
+}
