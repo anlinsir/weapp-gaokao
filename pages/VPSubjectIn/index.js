@@ -15,11 +15,10 @@ Page({
     pLevel:'',//省内排名
 
     type:'',//判断下一步去哪一个页面
+    desable:false
   },
   toSchoolPage(){
     this.saveAchi()
-    
-    
   },
   changeData(e){
     let type = e.target.dataset.type
@@ -37,22 +36,33 @@ Page({
       mathematics: this.data.mathematics,
       complex: this.data.average,
     }
+    wx.showLoading({
+      title: '加载中',
+    })
     app.request.achievementUpdate({ ...data })
       .then(r =>{
         console.log(r)
-        if (this.data.type == 1) {
-          wx.navigateTo({
-            url: '/pages/VPSubjectIn/school',
+        app.request.UserInfoUpdata()
+          .then(r => {
+            wx.hideLoading()
+            if(r.data.code === 2000){
+              wx.setStorageSync('UserInfo', r.data)
+            }
+            if (this.data.type == 1) {
+              wx.navigateTo({
+                url: '/pages/VPSubjectIn/school',
+              })
+            } else if (this.data.type == 2) {
+              wx.navigateTo({
+                url: '/pages/professionalInto/index',
+              })
+            } else if (this.data.type == 3) {
+              wx.navigateTo({
+                url: '/pages/characterTest/index',
+              })
+            }
           })
-        } else if (this.data.type == 2) {
-          wx.navigateTo({
-            url: '/pages/professionalInto/index',
-          })
-        } else if (this.data.type == 3) {
-          wx.navigateTo({
-            url: '/pages/characterTest/index',
-          })
-        }
+        
       })
   },
   /**
@@ -62,6 +72,7 @@ Page({
     this.setData({
       type: options.type
     })
+    
   },
 
   /**

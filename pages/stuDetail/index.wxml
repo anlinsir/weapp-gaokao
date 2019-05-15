@@ -24,7 +24,7 @@
     </view>
 
     <view class='stu-textInfo sub-text-color'>
-        四川师范大学（SICHUAN NORMAL UNIVERSITY），简称川师，位于素有“天府之国”之称的国家历史文化名城成都市，国家 中西部高校基础能力建设工程 重点建设大学，入选“卓越教师培养计划 ” 、四川省“2011计划”、“四川省卓越法律人才培养计划”、四川省“卓越工程师教育培养计划”，是四川省举办师范类本科专业最早、师范类院校中办学历史最为悠久的省属重点大学，也是四川省乃至西南地区培养教师的摇篮。
+        {{schoolDetail.info.intr}}
     </view>
   </swiper-item>
   <swiper-item style="overflow:auto">
@@ -63,7 +63,7 @@
           <view class='_title flex '>
             <text>专业录取分数线</text>
             <view catchtap='changeyearListBox' class='pull-down'>
-              <text>{{yearListId === 0 ? yearList[yearListId]: yearList[yearListId] + '年'}}</text>
+              <text>{{yearList[yearListId]}}</text>
               <image class='pull-down-icon' src='../../static/voluntPredict/down.png'></image>
               <view wx:if="{{yearListBox}}" class='pull-down-list'>
                 <view catchtap='changeyearList' wx:for="{{yearList}}" data-id="{{index}}" wx:key="{{index}}" class='.pull-down-list-item'>{{item}}</view>

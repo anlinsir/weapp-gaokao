@@ -1,14 +1,14 @@
 <!--pages/vip/pay.wxml-->
 <view class='production-list flex f-b'>
   <image src='../../static/vip/vip1.png'></image>
-  <text>购买后开通志愿测评功能</text>
-  <text class='red-color price'><text class='symbol'>￥</text>250</text>
+  <text>购买后开通<text class='red'>{{textarr[id - 1]}}</text> 功能</text>
+  <text class='red-color price'><text class='symbol'>￥</text>{{num}}</text>
 </view>
 
 
 <view class='_item'>
   <text>电话号码</text>
-  <view>13980552337</view>
+  <view>{{mobile}}</view>
 </view> 
 
 <view class='_item'>
@@ -24,7 +24,7 @@
   <view>
     <text style='color:#999;'>总价：</text>
     <text>￥</text>
-    <text style='font-size:50rpx;'>250</text>
+    <text style='font-size:50rpx;'>{{num}}</text>
   </view>
-  <button  class='white'>提交订单</button>
+  <button bindtap='Pays' class='white'>提交订单</button>
 </view>

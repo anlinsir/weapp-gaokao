@@ -91,12 +91,18 @@ class api {
   }
   //志愿测评
   achievementUpdate({...data}){
-    return this._request.getRequest(this._baseUrl + '/api/v1/achievement/update', { ...data }).then(res => res.data)
+    return this._request.postRequest(this._baseUrl + '/api/v1/achievement/update', { ...data }).then(res => res.data)
 
   }
   //推荐高校列表
   recommendedSchools({...data}){
     return this._request.getRequest(this._baseUrl + '/api/v1/achievement', { ...data }).then(res => res.data)
+
+  }
+
+  //测试完之后使用的列表
+  testoverList({...data}){
+    return this._request.getRequest(this._baseUrl + '/api/v1/subject/college', { ...data }).then(res => res.data)
 
   }
 

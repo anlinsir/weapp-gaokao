@@ -6,28 +6,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showAddress:-1,
+    showAddress: -1,
     activeAddress: {},//已选区域列表
-    activeAddressarr: [],//已选区域列表
+    examinationBatch: [],//批次列表
+    examinationBatchChoose: '',//选择的报考批次
+    probabilityList: [],//录取概率列表
+    probabilityID: '',//录取概率Id
+    areaslist: [],//区域列表
 
-    examinationBatch:[],//批次列表
-    examinationBatchChoose:'',//选择的报考批次
-    examinationBatchChoosetitle:'',
-    probabilityList:[],//录取概率列表
-    probabilityID:'',//录取概率Id
-    areaslist:[],//区域列表
+    schoolList: [],//学校列表
+    currentPages: 1,//当前页数
+    loading: false,//
+  },
 
-    schoolList:[],//学校列表
-    currentPages:1,//当前页数
-    loading:false,//
-  },
-  toStuDetail(e) {
-    let id = e.currentTarget.dataset.id
-    let title = e.currentTarget.dataset.title
-    wx.navigateTo({
-      url: `/pages/stuDetail/index?id=${id}&title=${title}`,
-    })
-  },
   GETAreasList() {
     const data = wx.getStorageSync('areasList')
     if (data && data.length) {
@@ -40,7 +31,7 @@ Page({
           this.setData({
             areaslist: r.data
           })
-        
+
           wx.setStorageSync('areasList', r.data)
         })
         .catch(e => {
@@ -48,49 +39,38 @@ Page({
         })
     }
   },
-  cancelModel(){//隐藏模态框
+  cancelModel() {//隐藏模态框
     this.setData({
       showAddress: -1
     })
   },
-  changeAddressStatus(e){ //显示下拉框
+  changeAddressStatus(e) { //显示下拉框
     console.log(e.currentTarget.dataset.id)
-    if (e.currentTarget.dataset.id == this.data.showAddress){
-      this.getSchoolList()
+    if (e.currentTarget.dataset.id == this.data.showAddress) {
       this.cancelModel()
       return
     }
-      this.setData({
-        showAddress: e.currentTarget.dataset.id
-      })
-
-    
+    this.setData({
+      showAddress: e.currentTarget.dataset.id
+    })
   },
-  getAddress(e){ //保存选中的地址
+  getAddress(e) { //保存选中的地址
     var arr = this.data.activeAddress
-    var newarr = this.data.activeAddressarr
-    if (!arr[Number(e.currentTarget.dataset.id)]){
+    if (!arr[Number(e.currentTarget.dataset.id)]) {
       arr[Number(e.currentTarget.dataset.id)] = true
-      newarr.push(e.currentTarget.dataset.id)
-    }else{
+    } else {
       arr[Number(e.currentTarget.dataset.id)] = false
-      newarr.splice(newarr.indexOf(e.currentTarget.dataset.id),1)
     }
     this.setData({
-      activeAddress: arr,
-      activeAddressarr:newarr
+      activeAddress: arr
     })
-    
-    
-    
     this.setData({
       currentPages: 1
     })
-  },  
-  BatchChoose(e){//选择报考批次
+  },
+  BatchChoose(e) {//选择报考批次
     this.setData({
-      examinationBatchChoose:e.currentTarget.dataset.id,
-      examinationBatchChoosetitle: e.currentTarget.dataset.title
+      examinationBatchChoose: e.currentTarget.dataset.id
     })
     this.cancelModel()
     this.setData({
@@ -98,7 +78,7 @@ Page({
     })
     this.getSchoolList()
   },
-  probabilityChoose(e){//选择录取概率
+  probabilityChoose(e) {//选择录取概率
     this.setData({
       probabilityID: e.currentTarget.dataset.id
     })
@@ -107,36 +87,36 @@ Page({
       currentPages: 1
     })
   },
-  getSchoolList({...data}){
+  getSchoolList({ ...data }) {
     if (this.data.loading) return
     this.setData({
-      loading:true
+      loading: true
     })
     let arrareas = []
-    for(var i in this.data.activeAddress){
-      if (this.data.activeAddress[i]){
+    for (var i in this.data.activeAddress) {
+      if (this.data.activeAddress[i]) {
         arrareas.push(i)
       }
     }
     // arrareas
     let pro = {
-      area: this.data.activeAddressarr.join(','),
-      batch: this.data.examinationBatchChoosetitle
+      area: '',
+      batch: this.data.examinationBatchChoose
     }
-    app.request.recommendedSchools({ ...data, ...pro, page: this.data.currentPages, })
-      .then(r=>{
-        if (this.data.currentPages === 1){
+    app.request.testoverList({ ...data, ...pro, page: this.data.currentPages, })
+      .then(r => {
+        if (this.data.currentPages === 1) {
           this.setData({
-            schoolList:r.data.data
+            schoolList: r.data.data
           })
         } else {
           let schoolList = this.data.schoolList
-          schoolList = schoolList.concat(r.data)
+          schoolList = schoolList.concat(r.data.data)
           this.setData({
             schoolList: schoolList
           })
         }
-        if (r.data.data.length && r.data.data.length >= 15){
+        if (r.data.data.length && r.data.data.length >= 15) {
           this.setData({
             currentPages: this.data.currentPages + 1
           })
@@ -200,7 +180,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      currentPages:1
+      currentPages: 1
     })
     this.getSchoolList()
   },

@@ -60,9 +60,9 @@ Page({
         console.log(r)
         let {exam,id,user_id} = r.data
       })
-    // wx.navigateBack({
-    //   delta:1
-    // })
+    wx.navigateBack({
+      delta:1
+    })
   },
   addIndex() {
     var a = Number(this.data.urlId)

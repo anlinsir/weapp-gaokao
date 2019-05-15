@@ -16,7 +16,7 @@ Page({
   },
   testconfrim(){//
     wx.navigateTo({
-      url: '/pages/VPSubjectIn/school',
+      url: '/pages/characterTest/school',
     })
   },
   /**

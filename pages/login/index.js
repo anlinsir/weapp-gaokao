@@ -36,9 +36,10 @@ Page({
         return
       }
 
-        
-        let { nickName, avatarUrl, ...datas } = res.detail.userInfo
-        app.request.UserInfoUpdata({ nickname: nickName, avatar: avatarUrl, ...datas })
+      let type = this.data.branchSubject[this.data.branchSubjectindex]
+      let area_id = this.data.provinceId
+      let { nickName, avatarUrl,  ...datas } = res.detail.userInfo
+      app.request.UserInfoUpdata({ nickname: nickName, avatar: avatarUrl, type, area_id, ...datas })
             .then(r => {
               if (!wx.getStorageSync('UserInfo')) {
                 wx.setStorageSync('UserInfo', r.data)

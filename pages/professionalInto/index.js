@@ -34,7 +34,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   getmajor(){
-    app.request.majors({ level: this.data.level})
+    // { level: this.data.level}
+    app.request.majors()
       .then(r => {
         this.setData({
           majorsList: r.data

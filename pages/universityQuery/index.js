@@ -17,18 +17,10 @@ Page({
     num: 1,
     showAddress: -1,
     activeAddress: {},//选择地址集合
-    examinationBatch: [{
-      name: '本科一批次',
-      id: 1
-    }, {
-      name: "本科二批次",
-      id: 2
-    }, {
-      name: '专科',
-      id: 3
-    }],
+    activeAddressarr:[],
+    examinationBatch: [],
     examinationBatchChoose:-1,//选择的报考批次
-
+    examinationBatchChoosetitle:'',
     probabilityList: [{
       name: '推荐',
       id: 1
@@ -37,7 +29,7 @@ Page({
       id: 2
     }],//录取概率列表
     probabilityID: '',//录取概率Id
-
+  
 
     schoolTypeList: [],//学校类型列表
     typeId:'',
@@ -88,19 +80,23 @@ Page({
   },
   getAddress(e) { //保存选中的地址
     var arr = this.data.activeAddress
+    var newarr = this.data.activeAddressarr
     if (!arr[Number(e.currentTarget.dataset.id)]) {
       arr[Number(e.currentTarget.dataset.id)] = e.currentTarget.dataset.name
+      newarr.push(e.currentTarget.dataset.id)
       this.setData({
         activeAddressNum: this.data.activeAddressNum + 1
       })
     } else {
       delete arr[Number(e.currentTarget.dataset.id)] 
+      newarr.splice(newarr.indexOf(e.currentTarget.dataset.id), 1)
       this.setData({
         activeAddressNum: this.data.activeAddressNum - 1
       })
     }
     this.setData({
-      activeAddress: arr
+      activeAddress: arr,
+      activeAddressarr : newarr
     })
    
   }, 
@@ -162,10 +158,14 @@ Page({
       })
   },
   onLoad: function (options) {
+    this.setData({
+      examinationBatch: app.examinationBatch
+    })
     this.getmajor()
     this.getSchoolList()
     this.getTypeList()
     this.GETAreasList()
+   
   },
   changeMajors({ detail }) {//改变父专业
     this.setData({
@@ -222,7 +222,11 @@ Page({
   },
   changeAddressStatus(e) { //显示下拉框
     console.log(e.currentTarget.dataset.id)
+    this.setData({
+      currentPages:1
+    })
     if (e.currentTarget.dataset.id == this.data.showAddress) {
+      this.getSchoolList()
       this.cancelModel()
       return
     }
@@ -249,9 +253,12 @@ Page({
   },
   BatchChoose(e) {//选择报考批次
     this.setData({
-      examinationBatchChoose: e.currentTarget.dataset.id
+      examinationBatchChoose: e.currentTarget.dataset.id,
+      examinationBatchChoosetitle: e.currentTarget.dataset.title,
+      currentPages: 1
     })
     this.cancelModel()
+    this.getSchoolList()
   },
   yearChoose(e){//切换年份
     this.setData({
@@ -262,7 +269,8 @@ Page({
   
   probabilityChoose(e) {//选择录取概率
     this.setData({
-      probabilityID: e.currentTarget.dataset.id
+      probabilityID: e.currentTarget.dataset.id,
+      currentPages: 1
     })
     this.cancelModel()
   },
@@ -279,7 +287,8 @@ Page({
     }
     // arrareas
     let pro = {
-      area: ''
+      area: this.data.activeAddressarr.join(','),
+      batch: this.data.examinationBatchChoosetitle
     }
     app.request.Univer({ ...data, ...pro, page: this.data.currentPages })
       .then(r => {
@@ -306,8 +315,9 @@ Page({
   },
   toStuDetail(e) {
     let id = e.currentTarget.dataset.id
+    let title = e.currentTarget.dataset.title
     wx.navigateTo({
-      url: `/pages/stuDetail/index?id=${id}`,
+      url: `/pages/stuDetail/index?id=${id}&title=${title}`,
     })
   },
 

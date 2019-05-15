@@ -21,13 +21,16 @@ App({
     }],//录取概率列表
     examinationBatch: [{
       name: '本科一批次',
-      id: 1
+      id: 1,
+      title:'本一批'
     }, {
       name: "本科二批次",
-      id: 2
+        id: 2,
+        title: '本二批'
     }, {
       name: '专科',
-      id: 3
+        id: 3,
+        title: '专科批'
   }],//批次列表
     onLaunch: function() { //获取本地或者远程用户信息
         var _this = this

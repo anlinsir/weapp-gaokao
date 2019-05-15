@@ -7,6 +7,7 @@
         "pages/index/index",
         "pages/characterTest/index",
         "pages/characterTest/Detail",
+        "pages/characterTest/school",
         "pages/proDetail/index",
         "pages/stuDetail/index",
         "pages/universityQuery/index",

@@ -32,7 +32,7 @@
 
 <view hidden="{{showAddress != 2}}" class='P-box' >
   <view class='P-box-warp'>
-    <view style="color:{{examinationBatchChoose == item.id ?'#FBA97F':''}}" bindtap='BatchChoose' data-id="{{item.id}}" data-title="{{item.title}}" wx:key="{{item.id}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
+    <view style="color:{{examinationBatchChoose == item.id ?'#FBA97F':''}}" bindtap='BatchChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
   </view>
 
 </view>
@@ -53,10 +53,7 @@
 <SchoolItem
   wx:for="{{schoolList}}"
   wx:key="{{item.id}}"
-  data-id="{{item.id}}"
-  data-title="{{item.name}}"
 
-  bindtap="toStuDetail"
   Sname="{{item.name}}"
   logo="{{item.logo}}"
 

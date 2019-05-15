@@ -12,35 +12,10 @@ Page({
   PAY(e){
     console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
-    app.request.forcePay({ level : id})
-      .then(r=>{
-        console.log(r, r.data.payinfo.timeStamp)
-        wx.showLoading({
-          title:'正在发起支付',
-          mask:true
-        })
-        wx.requestPayment({
-          timeStamp: r.data.payinfo.timeStamp,
-          nonceStr: r.data.payinfo.nonceStr,
-          package: r.data.payinfo.package,
-          signType: r.data.payinfo.signType,
-          paySign: r.data.payinfo.paySign,
-          success(se){
-            console.log(se)
-          },
-          fail(e){
-            console.log(e)
-          },
-          complete(c){
-            console.log(c)
-            wx.hideLoading()
-          }
-        })
-      })
     
-    // wx.navigateTo({
-    //   url: '/pages/vip/pay',
-    // })
+    wx.navigateTo({
+      url: `/pages/vip/pay?id=${id}`,
+    })
   },
   /**
    * 生命周期函数--监听页面加载

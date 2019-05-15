@@ -1,15 +1,15 @@
 <!--pages/VPSubjectIn/index.wxml-->
 <view class='total-score'>
-  <input bindinput="changeData" data-type="total" value="{{total}}"   class='subScore' placeholder='输入总成绩'></input>
+  <input disabled='{{desable}}' bindinput="changeData" data-type="total" value="{{total}}"   class='subScore' placeholder='输入总成绩'></input>
 
-    <input bindinput="changeData" data-type="pLevel" value="{{pLevel}}" style='margin-bottom: 90rpx;margin-top: 20rpx;' class='subScore' placeholder='省内排名'></input>
+    <input disabled='{{desable}}' bindinput="changeData" data-type="pLevel" value="{{pLevel}}" style='margin-bottom: 90rpx;margin-top: 20rpx;' class='subScore' placeholder='省内排名'></input>
 
-  <view style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>录入每科成绩，测评结果更精准哦！(非必填)</view>
+  <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>录入每科成绩，测评结果更精准哦！(非必填)</view>
 
-  <input  bindinput="changeData" data-type="chinese" value="{{chinese}}" class='subScore' placeholder='语文成绩'></input>
-  <input  bindinput="changeData" data-type="mathematics" value="{{mathematics}}" class='subScore' placeholder='数学成绩'></input>
-  <input  bindinput="changeData" data-type="english" value="{{english}}" class='subScore' placeholder='英语成绩'></input>
-  <input  bindinput="changeData" data-type="average" value="{{average}}" class='subScore' placeholder='综合成绩'></input>
+  <input disabled='{{desable}}'  bindinput="changeData" data-type="chinese" value="{{chinese}}" class='subScore' placeholder='语文成绩'></input>
+  <input disabled='{{desable}}'  bindinput="changeData" data-type="mathematics" value="{{mathematics}}" class='subScore' placeholder='数学成绩'></input>
+  <input disabled='{{desable}}'  bindinput="changeData" data-type="english" value="{{english}}" class='subScore' placeholder='英语成绩'></input>
+  <input  disabled='{{desable}}' bindinput="changeData" data-type="average" value="{{average}}" class='subScore' placeholder='综合成绩'></input>
 
   <button bindtap='toSchoolPage' style='margin-top: 70rpx' class='main-button'>志愿推荐</button>
 

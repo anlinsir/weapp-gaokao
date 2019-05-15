@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "noVip": "/component/noVip/noVip",
+    "SchoolItem": "/component/schoolItem/index",
+    "i-load-more": "/iview/load-more/index"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "推荐高校志愿",
+  "navigationBarTextStyle": "white"
+}

@@ -12,11 +12,11 @@ Page({
     majorScores:[],//专业分数
     schoolDetail:null,//学校详情
     branchSubject:[],//文理科
-    branchSubjectId:'',//选中的
+    branchSubjectId:0,//选中的
     branchSubjectBoxShow:false,//文理科选择框
 
-    yearList: ['全部', '2018', '2017', '2016', '2015', '2014', '2013', '2012',],//年份列表
-    yearListId:'',
+    yearList: ['2018', '2017', '2016', '2015', '2014', '2013', '2012',],//年份列表
+    yearListId:0,
     yearListBox:false
 
   },
@@ -28,14 +28,14 @@ Page({
   changeyearList(e){//更换年份
     let id = e.currentTarget.dataset.id
     let year
-    if(id === 0 ){
-      year = ''
+    if(id === 0){
+      year = 0
     }else{
        year = this.data.yearList[id]
     }
-    
+    console.log(year)
     this.setData({
-      yearListId: year ,
+      yearListId: id ,
       yearListBox: false
     })
     this.getschoolDetailScoresMajor()
@@ -51,6 +51,7 @@ Page({
         branchSubjectId:Number(id),
         branchSubjectBoxShow:false
       })
+    
     this.getschoolDetailScoresMajor()
   },
   toSomePage(e) {
@@ -75,13 +76,19 @@ Page({
         })
       })
   },
-  getschoolDetailScoresMajor({college}){
+  getschoolDetailScoresMajor({...data}){
     //  year: this.data.yearListId, type: (this.data.branchSubjectId)
-    app.request.schoolDetailScoresMajor({ college})
+    wx.showLoading({
+      title:'加载中'
+    })
+    let year = this.data.yearList[this.data.yearListId]
+    let type =  this.data.branchSubject[Number(this.data.branchSubjectId) ] 
+    app.request.schoolDetailScoresMajor({ college: this.data.id, type, year })
       .then(r=>{
         this.setData({
           majorScores:r.data
         })
+        wx.hideLoading()
       })
   },
   getyearList(num){//获取年份列表
@@ -99,14 +106,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      id: options.id
+    })
+    wx.setNavigationBarTitle({
+      title: options.title
+    }) 
     this.getSchoolDetail(options.id)
     this.getschoolDetailScores(options.id)
-    this.getschoolDetailScoresMajor({ college: options.id})
+    
     let branchSubject = app.branchSubject
-    branchSubject.unshift('全部')
     this.setData({
       branchSubject: branchSubject
     })
+
+    this.getschoolDetailScoresMajor()
     this.getyearList(5)
   },
 
