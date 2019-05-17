@@ -9,6 +9,18 @@ Component({
     },
     logo:{
       type: String,
+    },
+    probabilityID:{
+      type: String
+    },
+    areaName:{
+      type:String
+    },
+    low_score:{
+      type:String
+    },
+    low_ranking:{
+      type:String
     }
   },
 

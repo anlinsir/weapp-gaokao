@@ -17,7 +17,7 @@
     <view class="caption-wrap">
       <i-collapse accordion name="{{name}}">
         <i-collapse-item  bindtap="changeSubMajors" data-id="{{item.code}}" wx:key="{{item.code}}" wx:for="{{submajorsList}}" style="color:#666;" title="{{item.name}}" name="{{item.code}}">
-            <view bindtap='toPorfess'  wx:key="{{item.code}}" wx:for="{{SubsubmajorsList}}" class='collapse-item' slot="content">
+            <view bindtap='toPorfess' data-id="{{item.code}}"  wx:key="{{item.code}}" wx:for="{{SubsubmajorsList}}" class='collapse-item' slot="content">
                 {{item.name}}
             </view>
         </i-collapse-item>

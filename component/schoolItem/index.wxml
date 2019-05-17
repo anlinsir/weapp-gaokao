@@ -4,15 +4,15 @@
   <view class='scholl-info'>
     <view class='line-1'>
       <text>{{Sname}}</text>
-      <!-- <image src='../../static/voluntPredict/recommend.png'></image> -->
-      <image src='../../static/voluntPredict/tops.png'></image>
+      <image wx:if="{{probabilityID == 1 }}" src='../../static/voluntPredict/recommend.png'></image>
+      <image wx:if="{{probabilityID == 2 }}" src='../../static/voluntPredict/tops.png'></image>
     </view>
 
     <view class='line-2'>
-      <text class='i'>所在地：四川</text>
+      <text class='i'>所在地：{{areaName || '暂无'}}</text>
       <text>2018年录取人数：56</text>
-      <text class='i'>排名：102</text>
-      <text>最低分数：560</text>
+      <text class='i'>排名：{{low_ranking || '暂无'}}</text>
+      <text>最低分数：{{low_score || '暂无'}}</text>
     </view>
   </view>
 </view>

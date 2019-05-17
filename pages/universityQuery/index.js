@@ -13,6 +13,8 @@ Page({
     SubsubmajorsList: [],//次次级专业
     professionalActive1: 0,
 
+
+    SactiveAddressarr:[],
     //school
     num: 1,
     showAddress: -1,
@@ -33,6 +35,16 @@ Page({
 
     schoolTypeList: [],//学校类型列表
     typeId:'',
+    typeName:'',
+
+    schoolTagList:[
+      {id:0,name:'211'},
+      { id: 1, name: '985' },
+      { id: 2, name: 'doub' },
+    ],
+    TagId:'',
+    tagName:'',
+
 
     schoolList: [],//学校列表
     currentPages: 1,//当前页数
@@ -43,13 +55,55 @@ Page({
     areaslist: [],//区域列表
     activeAddress: {},//已选区域列表
     activeAddressNum:0,
-    yearList: ['全部', '2018', '2017', '2016', '2015', '2014', '2013', '2012',],//年份列表
-    yearListId:-1,
+    yearList: [ '2018', '2017', '2016', '2015', '2014', '2013', '2012',],//年份列表
+    yearListId:'',
 
     Sareaslist:[],//批次区域列表
     SactiveAddress:{},
-    SactiveAddressNum:0
+    SactiveAddressNum:0,
+    title:'',
 
+  },
+  getBatchLists(){
+    let data = {
+      year: this.data.yearList[this.data.yearListId],
+      area: this.data.SactiveAddressarr.join(','),
+      // this.probabilityID
+    }
+    app.request.getbatchItem({...data})
+      .then(r=>{
+        console.log(r)
+      })
+    this.cancelModel()
+  },
+  changeTitle(e){
+    this.setData({
+      title: e.detail.value
+    })
+  },
+  titleGetList(){
+    this.setData({
+      currentPages: 1
+    })
+    this.getSchoolList()
+  },
+  ChangeTag(e){
+    if (e.currentTarget.dataset.id === this.data.TagId){
+      this.setData({
+        TagId: '',
+        tagName: '',
+      })
+    }else{
+      this.setData({
+        TagId: e.currentTarget.dataset.id,
+        tagName: e.currentTarget.dataset.name,
+      })
+    }
+    this.setData({
+      currentPages: 1
+    })
+    this.cancelModel()
+    this.getSchoolList()
   },
   changeSwiper({detail}){
     this.setData({
@@ -102,22 +156,26 @@ Page({
   }, 
 
   SgetAddress(e){
-    console.log(e)
     var arr = this.data.SactiveAddress
+    var newarr = this.data.SactiveAddressarr
     if (!arr[Number(e.currentTarget.dataset.id)]) {
       arr[Number(e.currentTarget.dataset.id)] = e.currentTarget.dataset.name
+      newarr.push(e.currentTarget.dataset.id)
       this.setData({
         SactiveAddressNum: this.data.SactiveAddressNum + 1
       })
     } else {
       delete arr[Number(e.currentTarget.dataset.id)]
+      newarr.splice(newarr.indexOf(e.currentTarget.dataset.id), 1)
       this.setData({
         SactiveAddressNum: this.data.SactiveAddressNum - 1
       })
     }
     this.setData({
-      SactiveAddress: arr
+      SactiveAddress: arr,
+      SactiveAddressarr: newarr
     })
+    
   } ,
   toSomePage(e){
     let id = Number(e.currentTarget.dataset.id)
@@ -137,7 +195,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   getmajor() {
-    app.request.majors()
+    app.request.majors({ parentId:0})
       .then(r => {
         this.setData({
           majorsList: r.data
@@ -162,6 +220,7 @@ Page({
       examinationBatch: app.examinationBatch
     })
     this.getmajor()
+    this.getBatchLists()
     this.getSchoolList()
     this.getTypeList()
     this.GETAreasList()
@@ -226,13 +285,17 @@ Page({
       currentPages:1
     })
     if (e.currentTarget.dataset.id == this.data.showAddress) {
-      this.getSchoolList()
+      
       this.cancelModel()
       return
     }
     this.setData({
       showAddress: e.currentTarget.dataset.id
     })
+  },
+  getList(){
+    this.getSchoolList()
+    this.cancelModel()
   },
   // getAddress(e) { //保存选中的地址
   //   var arr = this.data.activeAddress
@@ -246,35 +309,74 @@ Page({
   //   })
   // },
   typeChoose(e) {//选择学校类型
+    if (e.currentTarget.dataset.id === this.data.typeId){
+      this.setData({
+        typeId: '',
+        typeName: '',
+      })
+    }else{
+      this.setData({
+        typeId: e.currentTarget.dataset.id,
+        typeName: e.currentTarget.dataset.name,
+      })
+    }
     this.setData({
-      typeId: e.currentTarget.dataset.id
-    })
-    this.cancelModel()
-  },
-  BatchChoose(e) {//选择报考批次
-    this.setData({
-      examinationBatchChoose: e.currentTarget.dataset.id,
-      examinationBatchChoosetitle: e.currentTarget.dataset.title,
       currentPages: 1
     })
     this.cancelModel()
     this.getSchoolList()
   },
-  yearChoose(e){//切换年份
-    this.setData({
-      yearListId: e.currentTarget.dataset.id
-    })
+  BatchChoose(e) {//选择报考批次
+    if (e.currentTarget.dataset.id === this.data.examinationBatchChoose){
+      this.setData({
+        examinationBatchChoose: '',
+        examinationBatchChoosetitle: '',
+        currentPages: 1
+      })
+    }else{
+      this.setData({
+        examinationBatchChoose: e.currentTarget.dataset.id,
+        examinationBatchChoosetitle: e.currentTarget.dataset.title,
+        currentPages: 1
+      })
+    }
+    
+    
     this.cancelModel()
+    this.getSchoolList()
+  },
+  yearChoose(e){//切换年份
+    if (this.data.yearListId === e.currentTarget.dataset.id){
+      this.setData({
+        yearListId: ''
+      })
+    }else{
+      this.setData({
+        yearListId: e.currentTarget.dataset.id
+      })
+    }
+    
+    this.cancelModel()
+    this.getBatchLists()
   },
   
   probabilityChoose(e) {//选择录取概率
-    this.setData({
+    if (this.data.probabilityID === e.currentTarget.dataset.id){
+      this.setData({
+        probabilityID: '',
+      })
+    }else{
+      this.setData({
       probabilityID: e.currentTarget.dataset.id,
-      currentPages: 1
-    })
+      })
+    }
     this.cancelModel()
+    this.getBatchLists()
   },
   getSchoolList({ ...data }) {
+    wx.showLoading({
+      title: '加载中',
+    })
     if (this.data.loading) return
     this.setData({
       loading: true
@@ -286,12 +388,19 @@ Page({
       }
     }
     // arrareas
+    let is_211 = this.data.TagId === 0 ? 1 : 0
+      let is_985 = this.data.TagId === 1 ? 1 : 0
+    let is_double = this.data.TagId === 2 ? 1 : 0 
     let pro = {
       area: this.data.activeAddressarr.join(','),
-      batch: this.data.examinationBatchChoosetitle
+      batch: this.data.examinationBatchChoosetitle,
+      type: this.data.typeId,
+      is_211, is_985, is_double,
+      title: this.data.title
     }
     app.request.Univer({ ...data, ...pro, page: this.data.currentPages })
       .then(r => {
+        wx.hideLoading()
         if (this.data.currentPages === 1) {
           this.setData({
             schoolList: r.data.data

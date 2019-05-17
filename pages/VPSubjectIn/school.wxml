@@ -2,7 +2,7 @@
 <view class='fixed' hidden="{{showAddress <= 0}}">
 
 </view>
-<view class='down-menu text-center main-text-color'>
+<view wx:if="{{vipL >  0}}" class='down-menu text-center main-text-color'>
   <view bindtap='changeAddressStatus' data-id="1" class='menu-item'>
     <text data-id="1">高考地址</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
@@ -12,7 +12,7 @@
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
   </view>
   <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
-    <text data-id="3">{{probabilityID?probabilityList[probabilityID - 1].name:'录取概率'}}</text>
+    <text data-id="3">{{probabilityName || '录取概率'}}</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
   </view>
 
@@ -39,7 +39,7 @@
 
 <view hidden="{{showAddress != 3}}" class='P-box' >
   <view class='P-box-warp'>
-    <view  style="color:{{probabilityID == item.id ?'#FBA97F':''}}" bindtap='probabilityChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{probabilityList}}"  class="P-box-item">{{item.name}}</view>
+    <view  style="color:{{probabilityID == item.id ?'#FBA97F':''}}" bindtap='probabilityChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{probabilityList}}" data-name="{{item.name}}"  class="P-box-item">{{item.name}}</view>
   </view>
 
 </view>
@@ -55,10 +55,13 @@
   wx:key="{{item.id}}"
   data-id="{{item.id}}"
   data-title="{{item.name}}"
-
+  probabilityID="{{probabilityID}}"
   bindtap="toStuDetail"
   Sname="{{item.name}}"
   logo="{{item.logo}}"
+  areaName="{{item.area.name}}"
+  low_score="{{item.model.low_score}}"
+  low_ranking="{{item.model.low_ranking}}"
 
  />
  <view hidden="{{!loading && schoolList.length==0}}">

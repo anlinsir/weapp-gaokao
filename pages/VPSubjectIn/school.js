@@ -16,10 +16,13 @@ Page({
     probabilityList:[],//录取概率列表
     probabilityID:'',//录取概率Id
     areaslist:[],//区域列表
+    
+    probabilityName:"",
 
     schoolList:[],//学校列表
     currentPages:1,//当前页数
     loading:false,//
+    vipL:''
   },
   toStuDetail(e) {
     let id = e.currentTarget.dataset.id
@@ -88,24 +91,41 @@ Page({
     })
   },  
   BatchChoose(e){//选择报考批次
-    this.setData({
-      examinationBatchChoose:e.currentTarget.dataset.id,
-      examinationBatchChoosetitle: e.currentTarget.dataset.title
-    })
-    this.cancelModel()
+    if (e.currentTarget.dataset.id === this.examinationBatchChoose){
+      this.setData({
+        examinationBatchChoose: '',
+        examinationBatchChoosetitle: ''
+      })
+    }else{
+      this.setData({
+        examinationBatchChoose: e.currentTarget.dataset.id,
+        examinationBatchChoosetitle: e.currentTarget.dataset.title
+      })
+    }
+    
     this.setData({
       currentPages: 1
     })
+    this.cancelModel()
     this.getSchoolList()
   },
   probabilityChoose(e){//选择录取概率
-    this.setData({
-      probabilityID: e.currentTarget.dataset.id
-    })
-    this.cancelModel()
+    if (this.data.probabilityID === e.currentTarget.dataset.id){
+      this.setData({
+        probabilityID: '',
+        probabilityName: ''
+      })
+    }else{
+      this.setData({
+        probabilityID: e.currentTarget.dataset.id,
+        probabilityName: e.currentTarget.dataset.name
+      })
+    }
     this.setData({
       currentPages: 1
     })
+    this.cancelModel()
+    this.getSchoolList()
   },
   getSchoolList({...data}){
     if (this.data.loading) return
@@ -121,7 +141,8 @@ Page({
     // arrareas
     let pro = {
       area: this.data.activeAddressarr.join(','),
-      batch: this.data.examinationBatchChoosetitle
+      batch: this.data.examinationBatchChoosetitle,
+      sprint: this.data.probabilityID
     }
     app.request.recommendedSchools({ ...data, ...pro, page: this.data.currentPages, })
       .then(r=>{
@@ -150,6 +171,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var user = wx.getStorageSync('UserInfo')
+    this.setData({
+      vipL: user.vip_level
+    })
     this.GETAreasList()
     this.getSchoolList()
     this.setData({

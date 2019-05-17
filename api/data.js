@@ -1,7 +1,7 @@
 import request from './request'
 class api {
     constructor() {
-        this._baseUrl = "http://gaoxiao.zhexue.dev"
+      this._baseUrl = "http://api.spraycd.com"
         this._defaultHeader = {
             token: 'tdyufubhi'
         }
@@ -13,9 +13,10 @@ class api {
      * 统一的异常处理方法
      */
     errorHander(res) {
-        console.error(res)
-      console.log('错误')
+    }
 
+    UnToken(res){
+      console.log(res)
     }
 
     //模考录入
@@ -91,7 +92,7 @@ class api {
   }
   //志愿测评
   achievementUpdate({...data}){
-    return this._request.postRequest(this._baseUrl + '/api/v1/achievement/update', { ...data }).then(res => res.data)
+    return this._request.getRequest(this._baseUrl + '/api/v1/achievement/update', { ...data }).then(res => res.data)
 
   }
   //推荐高校列表
@@ -105,6 +106,21 @@ class api {
     return this._request.getRequest(this._baseUrl + '/api/v1/subject/college', { ...data }).then(res => res.data)
 
   }
+
+
+  //获取用户信息
+  
+  getUserInfo({...data}){
+    return this._request.postRequest(this._baseUrl + '/api/v1/auth/info', { ...data }).then(res => res.data)
+
+  }
+
+  //批次查询
+getbatchItem({...data}){
+  return this._request.getRequest(this._baseUrl + '/api/v1/batchItem', { ...data }).then(res => res.data)
+
+}
+
 
 
 }

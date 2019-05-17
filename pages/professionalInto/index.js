@@ -35,17 +35,17 @@ Page({
    */
   getmajor(){
     // { level: this.data.level}
-    app.request.majors()
+    app.request.majors({ parentId:0})
       .then(r => {
         this.setData({
           majorsList: r.data
         })
-        app.request.majors({ parentId: this.data.majorsList[0].code, level: this.data.level })
+        app.request.majors({ parentId: this.data.majorsList[0].code})
           .then(r => {
             this.setData({
               submajorsList: r.data
             })
-            app.request.majors({ parentId: this.data.submajorsList[0].code, level: this.data.level })
+            app.request.majors({ parentId: this.data.submajorsList[0].code })
               .then(r => {
                 this.setData({
                   SubsubmajorsList: r.data

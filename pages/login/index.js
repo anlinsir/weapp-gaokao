@@ -50,14 +50,10 @@ Page({
                 userPerf.branchSubjectindex = this.data.branchSubjectindex
                 wx.setStorageSync('userPerf', userPerf)
                     //判断有没有 输入 分数等信息
-            
                   wx.navigateTo({
                     url: '/pages/login/two',
                   })
-                
-                
             })
-
     },
 
     GETAreasList() {

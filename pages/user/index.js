@@ -1,4 +1,6 @@
 // pages/user/index.js
+const app = getApp()
+
 Page({
 
   /**
@@ -23,6 +25,11 @@ Page({
   },
   onLoad: function (options) {
     var user = wx.getStorageSync('UserInfo')
+      //加载用户信息
+      app.request.getUserInfo()
+        .then(r=>{
+          wx.setStorageSync('UserInfo', r.data)
+        })
     this.setData({
       userInfo:user
     })

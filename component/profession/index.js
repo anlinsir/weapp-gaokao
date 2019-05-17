@@ -42,14 +42,15 @@ Component({
       let id = (e.currentTarget.dataset.id)
       this.triggerEvent('changeSubMajors', [this.data.urlId, id])
     },
-    toPorfess(){
+    toPorfess(e){
+      let id = (e.currentTarget.dataset.id)
       if (this.data.types == 2){
         wx.navigateTo({
           url: '/pages/VPSubjectIn/school',
         })
       }else{
         wx.navigateTo({
-          url: '/pages/proDetail/index',
+          url: `/pages/proDetail/index?id=${id}`,
         })
       }
       

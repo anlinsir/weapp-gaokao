@@ -42,8 +42,6 @@ Page({
     app.request.achievementUpdate({ ...data })
       .then(r =>{
         console.log(r)
-        app.request.UserInfoUpdata()
-          .then(r => {
             wx.hideLoading()
             if(r.data.code === 2000){
               wx.setStorageSync('UserInfo', r.data)
@@ -63,7 +61,6 @@ Page({
             }
           })
         
-      })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -72,7 +69,25 @@ Page({
     this.setData({
       type: options.type
     })
-    
+    wx.showLoading({
+      title:"获取信息中"
+    })
+    app.request.getUserInfo()
+      .then(r => {
+        wx.hideLoading()
+        wx.setStorageSync('UserInfo', r.data)
+        var user = wx.getStorageSync('UserInfo')
+        let { total, ranking, chinese, mathematics, english, complex } = user.achievement
+        this.setData({
+          total,//总成绩
+          chinese, //语文分数
+          mathematics, //数学分数
+          english, //英语分数
+          average: complex, //综合分数
+          pLevel: ranking,//省内排名
+        })
+      })
+   
   },
 
   /**

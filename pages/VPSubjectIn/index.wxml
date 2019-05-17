@@ -4,6 +4,7 @@
 
     <input disabled='{{desable}}' bindinput="changeData" data-type="pLevel" value="{{pLevel}}" style='margin-bottom: 90rpx;margin-top: 20rpx;' class='subScore' placeholder='省内排名'></input>
 
+  <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>一天只能修改一次高考成绩，模考成绩可以所以修改</view>
   <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>录入每科成绩，测评结果更精准哦！(非必填)</view>
 
   <input disabled='{{desable}}'  bindinput="changeData" data-type="chinese" value="{{chinese}}" class='subScore' placeholder='语文成绩'></input>

@@ -4,10 +4,9 @@
 
  * date: 2018-5-19
  */
-console.log()
 class request {
     constructor() {
-        
+      this._baseUrl = "http://api.spraycd.com"
     }
 
     /**
@@ -15,8 +14,8 @@ class request {
      */
     setErrorHandler(handler) {
         this._errorHandler = handler;
-        console.log('错误')
     }
+  
 
     /**
      * GET类型的网络请求
@@ -47,13 +46,14 @@ class request {
     postRequest(url, data, header = this._header) {
       return this.requestAll(url, data, {
         Authorization: 'Bearer ' + wx.getStorageSync('token') || ''
-      }, 'POST')
+      }, 'post')
     }
 
     /**
      * 网络请求
      */
     requestAll(url, data, header, method) {
+      var _this = this
         return new Promise((resolve, reject) => {
             wx.request({
                 url: url,
@@ -63,19 +63,45 @@ class request {
                 success: (res => {
                     if (res.statusCode === 200) {
                         //200: 服务端业务处理正常结束
+                      
+                      if (res.data.code == 7900 || res.data.message == "登录已失效"){
+                        wx.showModal({
+                          title:'提示',
+                          content:'你的登录已失效,请重新登录',
+                          showCancel:false,
+                          confirmText:'重新登录',
+                          success:(res)=>{
+                            wx.login({
+                              success({ code }) {
+                                _this.getRequest(_this._baseUrl + '/api/v1/auth/session', { code:code })
+                                .then(r =>{
+                                  wx.setStorageSync('token', r.data.data.token)
+                                  wx.switchTab({
+                                    url:'/pages/user/index'
+                                  })
+                                })
+                              }
+                            })
+                          }
+                        })
+                      }
                         resolve(res)
                     } else {
                         //其它错误，提示用户错误信息
+                      
                         if (this._errorHandler != null) {
                             //如果有统一的异常处理，就先调用统一异常处理函数对异常进行处理
+
                             this._errorHandler(res)
                         }
                         reject(res)
                     }
                 }),
                 fail: (res => {
+                  console.log(res)
                     if (this._errorHandler != null) {
                         this._errorHandler(res)
+                        
                     }
                     reject(res)
                 })
