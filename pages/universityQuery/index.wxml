@@ -21,7 +21,7 @@
 <view class='down-menu text-center main-text-color'>
   <view  bindtap='changeAddressStatus' data-id="1" class='menu-item nowarp'>
     <text >
-      <text  wx:if="{{activeAddressNum > 0}}" wx:for="{{activeAddress}}">{{item }}</text>
+      <text  wx:if="{{activeAddressNum > 0}}" wx:for="{{activeAddress}}" wx:key="index">{{item }}</text>
     </text>
     <text wx:if="{{activeAddressNum <=  0}}" data-id="1">高校地址</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
