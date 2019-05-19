@@ -50,23 +50,42 @@ Page({
   onLoad: function (options) {
    
   
-    let { mobile} = wx.getStorageSync('UserInfo')
+    let { mobile ,discount} = wx.getStorageSync('UserInfo')
     this.setData({
       id: options.id,
       mobile: mobile|| '无'
     })
     if (this.data.id == 1){
-      this.setData({
-        num: 50
-      })
+      if (discount === 1) { 
+        this.setData({
+          num: 35
+        })
+      }else{
+        this.setData({
+          num: 50
+        })
+      }
     } else if (this.data.id == 2){
-      this.setData({
-        num:250
-      })
+      if (discount === 1) { 
+        this.setData({
+          num: 175
+        })
+      }else{
+        
+        this.setData({
+          num: 250
+        })
+      }
     }else{
-      this.setData({
-        num: 280
-      })
+      if (discount === 1) { 
+        this.setData({
+          num: 196
+        })
+      }else{
+        this.setData({
+          num: 280
+        })
+      }
     }
   },
 

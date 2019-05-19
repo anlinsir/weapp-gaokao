@@ -32,19 +32,31 @@ App({
         id: 3,
         title: '专科批'
   }],//批次列表
-    onLaunch: function() { //获取本地或者远程用户信息
+    onLaunch: function(res) { //获取本地或者远程用户信息
+      
         var _this = this
-
+        // wx.showModal({
+        //   title: res.query.invite,
+        //   content: res.query
+        // })
+      console.log(res.query.invite)
         if (wx.getStorageSync('token')) {
             _this.globalData.userInfo = wx.getStorageSync('token')
         } else {
+          let invite = res.query.invite || ''
             wx.login({
-                success({ code }) {
+              success({ code}) {
+                  console.log(code)
+                  // return
                     if (code) {
-                        _this.request.Login({ code })
+                      _this.request.Login({ code, invite })
                             .then(({ data }) => {
+                              console.log(data)
                                 _this.globalData.userInfo = data
                                 wx.setStorageSync('token', data.token)
+                            })
+                            .catch(e=>{
+                              console.log(e)
                             })
 
                     } else {

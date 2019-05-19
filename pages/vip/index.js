@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    invite:'',//邀请码
   },
   PAY(e){
     console.log(e.currentTarget.dataset.id)
@@ -21,7 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let { invite } = wx.getStorageSync('UserInfo')
+    this.setData({
+      invite: invite
+    })
   },
 
   /**
@@ -74,7 +77,7 @@ Page({
   onShareAppMessage: function (res) {
    return{
       title: '高考一点通',
-     path: "/pages/login/index",
+     path: `/pages/login/index?invite=${this.data.invite}`,
     //  imageUrl:""
      success(res){
        console.log(res)
