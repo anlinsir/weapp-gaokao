@@ -3,7 +3,7 @@ class api {
     constructor() {
       this._baseUrl = "http://api.spraycd.com"
         this._defaultHeader = {
-            token: 'tdyufubhi'
+           
         }
         this._request = new request
         this._request.setErrorHandler(this.errorHander)
