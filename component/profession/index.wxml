@@ -20,6 +20,7 @@
             <view bindtap='toPorfess' data-id="{{item.code}}"  wx:key="{{item.code}}" wx:for="{{SubsubmajorsList}}" class='collapse-item' slot="content">
                 {{item.name}}
             </view>
+                <view class='collapse-item' wx:if="{{!SubsubmajorsList.length}}" slot="content" >暂无</view>
         </i-collapse-item>
       </i-collapse>
     </view>

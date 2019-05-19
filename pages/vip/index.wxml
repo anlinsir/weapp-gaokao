@@ -36,6 +36,6 @@
 <view class='share-discount text-center'>
   <view >分享后立享<text class='red-color'>7</text>折！</view>
   <view >
-    <button>立即分享</button>
+    <button bindtap='ShareOpen' open-type='share'>立即分享</button>
   </view>
 </view>

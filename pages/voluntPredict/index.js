@@ -58,7 +58,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var user = wx.getStorageSync("UserInfo")
+    // if (!user.vip_level  || user.vip_level < 2){
+    //  wx.showModal({
+    //   title: '您的等级不足，不能使用此功能',
+    //   content: '需要vip等级为 2 才能使用志愿测评功能',
+    //   showCancel: true,
+    //   cancelText: '开通vip',
+    //   cancelColor: '#EA5252',
+    //   confirmText: '好的',
+    //   success: function(res) {
+    //     if (res.confirm) {
+    //       wx.switchTab({
+    //         url: '/pages/user/index',
+    //       })
+    //     } else if (res.cancel) {
+    //       wx.navigateTo({
+    //         url: '/pages/vip/index',
+    //       })
+    //     }
+       
+    //   },
+    // })
+    // }
   },
 
   /**

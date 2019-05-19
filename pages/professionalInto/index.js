@@ -34,18 +34,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   getmajor(){
-    // { level: this.data.level}
-    app.request.majors({ parentId:0})
+    // {}
+    app.request.majors({ parentId:0, level: this.data.level})
       .then(r => {
         this.setData({
           majorsList: r.data
         })
-        app.request.majors({ parentId: this.data.majorsList[0].code})
+        app.request.majors({ parentId: this.data.majorsList[0].code, level: this.data.level})
           .then(r => {
             this.setData({
               submajorsList: r.data
             })
-            app.request.majors({ parentId: this.data.submajorsList[0].code })
+            app.request.majors({ parentId: this.data.submajorsList[0].code, level: this.data.level})
               .then(r => {
                 this.setData({
                   SubsubmajorsList: r.data

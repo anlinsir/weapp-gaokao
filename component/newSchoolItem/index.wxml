@@ -7,13 +7,16 @@
     </view>
 
     <view class='line-2'>
-      <text class='i'>所在地：四川</text>
-      <text>录取批次：56</text>
-      <text class='i'>高效类型：102</text>
+      <text class='i'>所在地：{{area}}</text>
+      <text>录取批次：{{batchs[0] }}</text>
+      <text class='i'>高效类型：{{type}}</text>
     </view>
 
     <view class='line-3'>
-      <view class='tags'>在线</view>
+      <view class='tags' wx:if="{{is_211 == 1}}">211</view>
+      <view class='tags' wx:if="{{is_985 == 1}}">985</view>
+      <view class='tags' wx:if="{{is_double == 1}}">双一流</view>
+
     </view>
   </view>
 </view>

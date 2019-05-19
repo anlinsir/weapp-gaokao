@@ -16,7 +16,10 @@
           </view>
 
           <view class='line-3'>
-            <view class='tags'>在线</view>
+            <view wx:if="{{schoolDetail.is_211 == 1}}" class='tags'>211</view>
+            <view wx:if="{{schoolDetail.is_985 == 1}}" class='tags'>985</view>
+            <view wx:if="{{schoolDetail.is_double == 1}}" class='tags'>双一流</view>
+
           </view>
         </view>
       </view>
@@ -47,7 +50,7 @@
             <view  class='_item'>{{item.high_score}}</view>
             <view  class='_item'>{{item.low_score}}</view>
             <view  class='_item'>{{item.avg_score}}</view>
-            <view  class='_item'>{{item.low_ranking}}</view>
+            <view  class='_item'>{{item.low_ranking === 0 ? '-' : item.low_ranking}}</view>
 
 
           </view>

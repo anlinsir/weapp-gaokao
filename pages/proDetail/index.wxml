@@ -17,11 +17,11 @@
       <view>
         <view class='part-item'>
           <view class='_title'>基本信息</view>
-          <view class='_box'>
-            <view class='_item'>专业名称：经济统计学</view>
-            <view class='_item'>专业名称：经济统计学</view>
-            <view class='_item'>专业名称：经济统计学</view>
-            <view class='_item'>专业名称：经济统计学</view>
+          <view wx:if="majorDetail && majorDetail.info" class='_box'>
+            <view class='_item'>专业名称：{{majorDetail.name}}</view>
+            <view class='_item'>专业代码：{{majorDetail.info.code}}</view>
+            <view class='_item'>学历层次：{{majorDetail.info.code}}</view>
+            <view class='_item'>授予学位：{{majorDetail.info.degree || '暂无'}}</view>
           </view>
         </view>
 
@@ -30,25 +30,17 @@
           <view class='_title'>开设院校</view>
           <view class='schoolList'>
             <!--component/schoolItem/index.wxml-->
-              <view class='item-box'>
-                <image class='school-icon' src='{{logo}}'></image>
+              <view wx:for="{{schoolList}}" bindtap='toStuDetail'  data-title="{{item.name}}" data-id="{{item.id}}" class='item-box'>
+                <image class='school-icon' src='{{item.logo}}'></image>
                 <view class='scholl-info'>
                   <view class='line-1'>
-                    <text>开设院校</text>
+                    <text>{{item.name}}</text>
                     <!-- <image src='../../static/voluntPredict/recommend.png'></image> -->
-                    <image src='../../static/voluntPredict/tops.png'></image>
+                    <!-- <image src='../../static/voluntPredict/tops.png'></image> -->
                   </view>
 
                   <view class='line-2'>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
-                   <text>专业1</text>
+                   <view wx:if="{{j < 8}}" wx:for-item="itemName" wx:for-index="j" wx:for="{{item.majors}}" >{{itemName.name}}</view>
 
                   </view>
                 </view>

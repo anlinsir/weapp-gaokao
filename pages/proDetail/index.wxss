@@ -82,10 +82,9 @@ Page {
   color:rgba(102,102,102,1);
   line-height:80rpx;
 }
-/* component/schoolItem/index.wxss */
 .item-box{
   width:750rpx;
-  height:200rpx;
+  min-height:200rpx;
   background:rgba(255,255,255,1);
   padding: 30rpx;
   box-sizing: border-box;
@@ -121,7 +120,8 @@ Page {
   font-size: 28rpx;
   flex-wrap: wrap;
 }
-.line-2 text{
+.line-2 view{
+  font-size: 30rpx;
   margin-right: 30rpx;
   margin-bottom: 10rpx;
 }

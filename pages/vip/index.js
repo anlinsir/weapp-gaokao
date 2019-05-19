@@ -35,7 +35,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
 
   /**
@@ -69,7 +71,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+   return{
+      title: '高考一点通',
+     path: "/pages/login/index",
+    //  imageUrl:""
+     success(res){
+       console.log(res)
+       wx.showShareMenu({
+         // 要求小程序返回分享目标信息
+         withShareTicket: true
+       });
+     }
+   }
   }
 })

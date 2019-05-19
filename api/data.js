@@ -121,6 +121,21 @@ getbatchItem({...data}){
 
 }
 
+//专业详情
+majorDetails({...data}){
+  return this._request.getRequest(this._baseUrl + '/api/v1/majors/info', { ...data }).then(res => res.data)
+
+}
+
+//专业 学校查询
+
+majorSchool({...data}){
+  return this._request.getRequest(this._baseUrl + '/api/v1/majors/college', { ...data }).then(res => res.data)
+
+}
+
+
+
 
 
 }

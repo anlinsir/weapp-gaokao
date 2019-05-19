@@ -95,6 +95,13 @@
   Sname="{{item.name}}"
   logo="{{item.logo}}"
   bindtap="toStuDetail"
+  is_211="{{item.is_211}}"
+  is_985="{{item.is_985}}"
+  is_double="{{item.is_double}}"
+  area="{{item.info.city}}"
+  batchs="{{item.batchs}}"
+  type="{{item.type.name}}"
+  
  
  />
  <view hidden="{{!loading && schoolList.length==0}}">
@@ -114,25 +121,26 @@
         bind:changeSubMajors="changeSubMajors"
         majorsList="{{majorsList}}"
         name='{{name}}'
+        bind:changePages="changePages"
         />
   </swiper-item>
   <swiper-item>
    <view style='background:rgba(245,245,245,1);' class='down-menu text-center main-text-color'>
-  <view  bindtap='changeAddressStatus' data-id="1" class='menu-item nowarp'>
+  <!-- <view  bindtap='changeAddressStatus' data-id="1" class='menu-item nowarp'>
     <text >
       <text  wx:if="{{SactiveAddressNum > 0}}" wx:for="{{SactiveAddress}}">{{item }}</text>
     </text>
     <text wx:if="{{SactiveAddressNum <=  0}}" data-id="1">所在地</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
-    </view>
-  <view  bindtap='changeAddressStatus' data-id="2" class='menu-item'>
+    </view> -->
+  <view style='width:100%'  bindtap='changeAddressStatus' data-id="2" class='menu-item'>
     <text data-id="2">{{yearList[yearListId]? yearList[yearListId] :'年份'}}</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
   </view>
-  <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
+  <!-- <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
     <text data-id="3">{{probabilityID?probabilityList[probabilityID - 1].name:'录取概率'}}</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
-  </view>
+  </view> -->
 
 
 <view  hidden="{{showAddress != 1}}"  class='K-address-box'>
@@ -175,17 +183,17 @@
 
     <view class='flex'>
       <view class='views main-text-color'>第一批次</view>
-      <view class='views main-text-color'>700</view>
+      <view class='views main-text-color' wx:if="bitchList && bitchList[0]">{{bitchList[0].low_score || '暂无'}}</view>
     </view>
 
     <view class='flex'>
       <view class='views main-text-color'>第二批次</view>
-      <view class='views main-text-color'>400</view>
+      <view class='views main-text-color' wx:if="bitchList && bitchList[1]">{{bitchList[1].low_score || '暂无'}}</view>
     </view>
 
     <view class='flex'>
       <view class='views none main-text-color'>第三批次</view>
-      <view class='views none main-text-color'>111</view>
+      <view class='views main-text-color' wx:if="bitchList && bitchList[2]">{{bitchList[2].low_score || '暂无'}}</view>
     </view>
 
   </view>

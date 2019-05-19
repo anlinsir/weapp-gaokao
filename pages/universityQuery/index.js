@@ -12,7 +12,7 @@ Page({
     submajorsList: [],//次级专业
     SubsubmajorsList: [],//次次级专业
     professionalActive1: 0,
-
+    level:1,
 
     SactiveAddressarr:[],
     //school
@@ -40,7 +40,7 @@ Page({
     schoolTagList:[
       {id:0,name:'211'},
       { id: 1, name: '985' },
-      { id: 2, name: 'doub' },
+      { id: 2, name: '双一流' },
     ],
     TagId:'',
     tagName:'',
@@ -63,16 +63,20 @@ Page({
     SactiveAddressNum:0,
     title:'',
 
+    bitchList:[],//查批次
+
   },
   getBatchLists(){
     let data = {
-      year: this.data.yearList[this.data.yearListId],
+      year: this.data.yearList[this.data.yearListId] || this.data.yearList[0],
       area: this.data.SactiveAddressarr.join(','),
       // this.probabilityID
     }
     app.request.getbatchItem({...data})
       .then(r=>{
-        console.log(r)
+        this.setData({
+          bitchList:r.data
+        })
       })
     this.cancelModel()
   },
@@ -195,17 +199,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   getmajor() {
-    app.request.majors({ parentId:0})
+    app.request.majors({ parentId: 0, level: this.data.level })
       .then(r => {
         this.setData({
           majorsList: r.data
         })
-        app.request.majors({ parentId: this.data.majorsList[0].code })
+        app.request.majors({ parentId: this.data.majorsList[0].code, level: this.data.level  })
           .then(r => {
             this.setData({
               submajorsList: r.data
             })
-            app.request.majors({ parentId: this.data.submajorsList[0].code })
+            app.request.majors({ parentId: this.data.submajorsList[0].code, level: this.data.level  })
               .then(r => {
                 this.setData({
                   SubsubmajorsList: r.data
@@ -226,16 +230,22 @@ Page({
     this.GETAreasList()
    
   },
+  changePages({ detail }) {
+    this.setData({
+      level: detail
+    })
+    this.getmajor()
+  },
   changeMajors({ detail }) {//改变父专业
     this.setData({
       submajorsList: []
     })
-    app.request.majors({ parentId: detail[1] })
+    app.request.majors({ parentId: detail[1], level: this.data.level })
       .then(r => {
         this.setData({
           submajorsList: r.data
         })
-        app.request.majors({ parentId: this.data.submajorsList[0].code })
+        app.request.majors({ parentId: this.data.submajorsList[0].code, level: this.data.level })
           .then(r => {
             this.setData({
               SubsubmajorsList: r.data
@@ -248,7 +258,7 @@ Page({
     // this.setData({
     //   SubsubmajorsList: []
     // })
-    app.request.majors({ parentId: detail[1] })
+    app.request.majors({ parentId: detail[1], level: this.data.level })
       .then(r => {
         this.setData({
           SubsubmajorsList: r.data

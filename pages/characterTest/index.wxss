@@ -15,13 +15,14 @@ Page{
 
 .test-part-item{
   width:710rpx;
-  height:330rpx;
+  min-height:330rpx;
   margin-bottom: 30rpx;
   background:rgba(255,255,255,1);
   border-radius:20rpx;
   box-sizing: border-box;
   padding: 0 23rpx;
   padding-top: 47rpx;
+  padding-bottom: 30rpx;
 
 }
 .test-icon{

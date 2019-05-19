@@ -9,6 +9,24 @@ Component({
     },
     logo: {
       type: String,
+    },
+    is_211:{
+      type: Number
+    },
+    is_985:{
+      type: Number
+    },
+    is_double:{
+      type: Number
+    },
+    area:{
+      type:String
+    },
+    batchs:{
+      type:Array
+    },
+    type:{
+      type:String
     }
   },
 

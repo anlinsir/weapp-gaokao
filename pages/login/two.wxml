@@ -7,19 +7,19 @@
     <view  class='performance-form-item flex'>
       <text>三模</text>
       <image bindtap='toBranch' data-item="3" class='branch' src='../../static/login/subject.png'></image>
-      <input bindinput="changescore" data-item="3" value="{{scoreThere}}" placeholder='总成绩'></input>
+      <input type='number' bindinput="changescore" data-item="3" value="{{scoreThere}}" placeholder='总成绩'></input>
     </view>
 
     <view  class='performance-form-item flex'>
       <text>二模</text>
       <image bindtap='toBranch' data-item="2" class='branch' src='../../static/login/subject.png'></image>
-      <input bindinput="changescore" data-item="2" value="{{scoreTwo}}" placeholder='总成绩'></input>
+      <input type='number' bindinput="changescore" data-item="2" value="{{scoreTwo}}" placeholder='总成绩'></input>
     </view>
 
     <view  class='performance-form-item flex'>
       <text>一模</text>
       <image bindtap='toBranch' data-item="1" class='branch' src='../../static/login/subject.png'></image>
-      <input bindinput="changescore" data-item="1" value="{{scoreOne}}" placeholder='总成绩'></input>
+      <input type='number' bindinput="changescore" data-item="1" value="{{scoreOne}}" placeholder='总成绩'></input>
     </view>
 
 

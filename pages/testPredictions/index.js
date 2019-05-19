@@ -95,14 +95,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let userPerf = wx.getStorageSync('twotab')
-    // if (userPerf) {
-    //   this.setData({
-    //     scoreOne: userPerf.mock_one.total,
-    //     scoreTwo: userPerf.mock_two.total,
-    //     scoreThere: userPerf.mock_three.total
-    //   })
-    // }
+    let userPerf = wx.getStorageSync('twotab') || wx.getStorageSync('userPerf')
+    if (userPerf) {
+      this.setData({
+        scoreOne: userPerf.mock_one.total,
+        scoreTwo: userPerf.mock_two.total,
+        scoreThere: userPerf.mock_three.total
+      })
+    }
+    
   },
 
   /**
@@ -116,7 +117,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var user = wx.getStorageSync("UserInfo")
+    // if (user.vip_level < 1) {
+    //   wx.showModal({
+    //     title: '您的等级不足，不能使用此功能',
+    //     content: '需要vip等级为 1 才能使用志愿测评功能',
+    //     showCancel: true,
+    //     cancelText: '开通vip',
+    //     cancelColor: '#EA5252',
+    //     confirmText: '好的',
+    //     success: function (res) {
+    //         if (res.confirm) {
+    //           wx.switchTab({
+    //             url: '/pages/user/index',
+    //           })
+    //         } else if (res.cancel) {
+    //           wx.navigateTo({
+    //             url: '/pages/vip/index',
+    //           })
+    //         }
+    //     }
+    //   })
+    // }
   },
 
   /**
