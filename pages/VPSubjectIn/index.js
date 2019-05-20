@@ -48,7 +48,7 @@ Page({
             }
             if (this.data.type == 1) {
               wx.navigateTo({
-                url: '/pages/VPSubjectIn/school',
+                url: `/pages/VPSubjectIn/school?type=${1}`,
               })
             } else if (this.data.type == 2) {
               wx.navigateTo({

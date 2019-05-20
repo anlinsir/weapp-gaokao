@@ -50,7 +50,7 @@ class request {
       console.log('Bearer ' + wx.getStorageSync('token'))
       return this.requestAll(url, data, {
         Authorization: 'Bearer ' + wx.getStorageSync('token') || ''
-      }, 'post')
+      }, 'POST')
     }
 
     /**

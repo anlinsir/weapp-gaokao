@@ -47,9 +47,9 @@
           <view wx:for="{{collegeScores}}" wx:key="{{item.id}}" class='table-body flex'>
             <view class='_item'>{{item.year}}</view>
 
-            <view  class='_item'>{{item.high_score}}</view>
-            <view  class='_item'>{{item.low_score}}</view>
-            <view  class='_item'>{{item.avg_score}}</view>
+            <view  class='_item'>{{item.high_score === 0 ?  '-' : item.high_score}}</view>
+            <view  class='_item'>{{item.low_score === 0 ? '-' : item.low_score}}</view>
+            <view  class='_item'>{{item.avg_score === 0 ? '-' : item.avg_score}}</view>
             <view  class='_item'>{{item.low_ranking === 0 ? '-' : item.low_ranking}}</view>
 
 

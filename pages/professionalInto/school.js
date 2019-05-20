@@ -6,23 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showAddress:-1,
+    showAddress: -1,
     activeAddress: {},//已选区域列表
     activeAddressarr: [],//已选区域列表
 
-    examinationBatch:[],//批次列表
-    examinationBatchChoose:'',//选择的报考批次
-    examinationBatchChoosetitle:'',
-    probabilityList:[],//录取概率列表
-    probabilityID:'',//录取概率Id
-    areaslist:[],//区域列表
-    
-    probabilityName:"",
+    examinationBatch: [],//批次列表
+    examinationBatchChoose: '',//选择的报考批次
+    examinationBatchChoosetitle: '',
+    probabilityList: [],//录取概率列表
+    probabilityID: '',//录取概率Id
+    areaslist: [],//区域列表
 
-    schoolList:[],//学校列表
-    currentPages:1,//当前页数
-    loading:false,//
-    vipL:''
+    probabilityName: "",
+
+    schoolList: [],//学校列表
+    currentPages: 1,//当前页数
+    loading: false,//
+    vipL: '',
+    code:''
   },
   toStuDetail(e) {
     let id = e.currentTarget.dataset.id
@@ -43,7 +44,7 @@ Page({
           this.setData({
             areaslist: r.data
           })
-        
+
           wx.setStorageSync('areasList', r.data)
         })
         .catch(e => {
@@ -51,71 +52,71 @@ Page({
         })
     }
   },
-  cancelModel(){//隐藏模态框
+  cancelModel() {//隐藏模态框
     this.setData({
       showAddress: -1
     })
   },
-  changeAddressStatus(e){ //显示下拉框
+  changeAddressStatus(e) { //显示下拉框
     console.log(e.currentTarget.dataset.id)
-    if (e.currentTarget.dataset.id == this.data.showAddress){
+    if (e.currentTarget.dataset.id == this.data.showAddress) {
       this.getSchoolList()
       this.cancelModel()
       return
     }
-      this.setData({
-        showAddress: e.currentTarget.dataset.id
-      })
+    this.setData({
+      showAddress: e.currentTarget.dataset.id
+    })
 
-    
+
   },
-  getAddress(e){ //保存选中的地址
+  getAddress(e) { //保存选中的地址
     var arr = this.data.activeAddress
     var newarr = this.data.activeAddressarr
-    if (!arr[Number(e.currentTarget.dataset.id)]){
+    if (!arr[Number(e.currentTarget.dataset.id)]) {
       arr[Number(e.currentTarget.dataset.id)] = true
       newarr.push(e.currentTarget.dataset.id)
-    }else{
+    } else {
       arr[Number(e.currentTarget.dataset.id)] = false
-      newarr.splice(newarr.indexOf(e.currentTarget.dataset.id),1)
+      newarr.splice(newarr.indexOf(e.currentTarget.dataset.id), 1)
     }
     this.setData({
       activeAddress: arr,
-      activeAddressarr:newarr
+      activeAddressarr: newarr
     })
-    
-    
-    
+
+
+
     this.setData({
       currentPages: 1
     })
-  },  
-  BatchChoose(e){//选择报考批次
-    if (e.currentTarget.dataset.id === this.examinationBatchChoose){
+  },
+  BatchChoose(e) {//选择报考批次
+    if (e.currentTarget.dataset.id === this.examinationBatchChoose) {
       this.setData({
         examinationBatchChoose: '',
         examinationBatchChoosetitle: ''
       })
-    }else{
+    } else {
       this.setData({
         examinationBatchChoose: e.currentTarget.dataset.id,
         examinationBatchChoosetitle: e.currentTarget.dataset.title
       })
     }
-    
+
     this.setData({
       currentPages: 1
     })
     this.cancelModel()
     this.getSchoolList()
   },
-  probabilityChoose(e){//选择录取概率
-    if (this.data.probabilityID === e.currentTarget.dataset.id){
+  probabilityChoose(e) {//选择录取概率
+    if (this.data.probabilityID === e.currentTarget.dataset.id) {
       this.setData({
         probabilityID: '',
         probabilityName: ''
       })
-    }else{
+    } else {
       this.setData({
         probabilityID: e.currentTarget.dataset.id,
         probabilityName: e.currentTarget.dataset.name
@@ -127,14 +128,14 @@ Page({
     this.cancelModel()
     this.getSchoolList()
   },
-  getSchoolList({...data}){
+  getSchoolList({ ...data }) {
     if (this.data.loading) return
     this.setData({
-      loading:true
+      loading: true
     })
     let arrareas = []
-    for(var i in this.data.activeAddress){
-      if (this.data.activeAddress[i]){
+    for (var i in this.data.activeAddress) {
+      if (this.data.activeAddress[i]) {
         arrareas.push(i)
       }
     }
@@ -144,20 +145,20 @@ Page({
       batch: this.data.examinationBatchChoosetitle,
       sprint: this.data.probabilityID
     }
-    app.request.recommendedSchools({ ...data, ...pro, page: this.data.currentPages, })
-      .then(r=>{
-        if (this.data.currentPages === 1){
+    app.request.majorSchool({ ...data, ...pro, page: this.data.currentPages, code: this.data.code })
+      .then(r => {
+        if (this.data.currentPages === 1) {
           this.setData({
-            schoolList:r.data.data
+            schoolList: r.data.college.data
           })
         } else {
           let schoolList = this.data.schoolList
-          schoolList = schoolList.concat(r.data.data)
+          schoolList = schoolList.concat(r.data.college.data)
           this.setData({
             schoolList: schoolList
           })
         }
-        if (r.data.data.length && r.data.data.length >= 10){
+        if (r.data.college.data.length && r.data.college.data.length >= 10) {
           this.setData({
             currentPages: this.data.currentPages + 1
           })
@@ -171,6 +172,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      code:options.code
+    })
     var user = wx.getStorageSync('UserInfo')
     this.setData({
       vipL: user.vip_level
@@ -225,7 +229,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      currentPages:1
+      currentPages: 1
     })
     this.getSchoolList()
   },
@@ -235,7 +239,6 @@ Page({
    */
   onReachBottom: function () {
     this.getSchoolList()
-    console.log('tuyhijuoip')
   },
 
   /**

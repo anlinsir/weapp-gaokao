@@ -46,7 +46,7 @@ Component({
       let id = (e.currentTarget.dataset.id)
       if (this.data.types == 2){
         wx.navigateTo({
-          url: '/pages/VPSubjectIn/school',
+          url: `/pages/professionalInto/school?code=${id}`,
         })
       }else{
         wx.navigateTo({

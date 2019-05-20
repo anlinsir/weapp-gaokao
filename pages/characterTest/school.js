@@ -17,6 +17,7 @@ Page({
     schoolList: [],//学校列表
     currentPages: 1,//当前页数
     loading: false,//
+    vipL:0,
   },
 
   GETAreasList() {
@@ -116,7 +117,7 @@ Page({
             schoolList: schoolList
           })
         }
-        if (r.data.data.length && r.data.data.length >= 15) {
+        if (r.data.data.length && r.data.data.length >= 10) {
           this.setData({
             currentPages: this.data.currentPages + 1
           })
@@ -130,6 +131,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var user = wx.getStorageSync('UserInfo')
+    this.setData({
+      vipL: user.vip_level
+    })
     this.GETAreasList()
     this.getSchoolList()
     this.setData({

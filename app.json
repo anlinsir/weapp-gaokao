@@ -13,6 +13,7 @@
         "pages/universityQuery/index",
 
         "pages/professionalInto/index",
+        "pages/professionalInto/school",
         "pages/user/index",
         "pages/EXAinformation/index",
         "pages/EXAinformation/two",
