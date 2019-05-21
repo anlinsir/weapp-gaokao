@@ -72,4 +72,4 @@
     <i-load-more tip="{{ schoolList.length == 0 && !loading?'暂无数据':'' }}" loading="{{ loading }}" />      
  </view>
 
-<noVip />
+<noVip wx:if="{{vipL < 1}}" />

@@ -16,9 +16,9 @@
 
   <view class='vip-boxs'>
     <view class='vip-box'>
-      <image class="{{userInfo.vip_level < 1 ? 'graycale-100' : ''}}" src='../../static/vip/vip1.png'></image>
-      <image class="{{userInfo.vip_level < 2 ? 'graycale-100' : ''}}" src='../../static/vip/vip2.png'></image>
-      <image class="{{userInfo.vip_level < 3 ? 'graycale-100' : ''}}" src='../../static/vip/vip3.png'></image>
+      <image class="{{userInfo.vip.vip_level < 1 ? 'graycale-100' : ''}}" src='../../static/vip/vip1.png'></image>
+      <image class="{{userInfo.vip.vip_level < 2 ? 'graycale-100' : ''}}" src='../../static/vip/vip2.png'></image>
+      <image class="{{userInfo.vip.vip_level < 3 ? 'graycale-100' : ''}}" src='../../static/vip/vip3.png'></image>
     </view>
   </view>
 

@@ -133,7 +133,7 @@ Page({
   onLoad: function (options) {
     var user = wx.getStorageSync('UserInfo')
     this.setData({
-      vipL: user.vip_level
+      vipL: user.vip.vip_level
     })
     this.GETAreasList()
     this.getSchoolList()

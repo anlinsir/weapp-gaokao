@@ -19,7 +19,12 @@ Page({
     
     app.request.forcePay({ level: this.data.id })
       .then(r => {
-        console.log(r, r.data.payinfo.timeStamp)
+        if (r.code === 0){
+          wx.showModal({
+            title: r.message,
+          })
+          return
+        }
         wx.showLoading({
           title: '正在发起支付',
           mask: true
@@ -31,16 +36,35 @@ Page({
           signType: r.data.payinfo.signType,
           paySign: r.data.payinfo.paySign,
           success(se) {
-            console.log(se)
+            //重新加载用户信息
+            if(r.code === 2000){
+              app.request.getUserInfo()
+                .then(r=>{
+                  let UserP = r.data
+                  wx.setStorageSync('UserInfo',UserP)
+                  wx.reLaunch({
+                    url: 'pages/user/index',
+                  })
+                })
+            }else{
+              wx.showModal({
+                title: r.message,
+              })
+            }
           },
           fail(e) {
-            console.log(e)
+            wx.showModal({
+              title: e,
+            })
           },
           complete(c) {
             console.log(c)
             wx.hideLoading()
           }
         })
+      })
+      .catch(e=>{
+        console.log(e)
       })
   },
   
