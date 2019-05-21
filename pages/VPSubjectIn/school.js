@@ -176,11 +176,14 @@ Page({
    */
   onLoad: function(options) {
     var user = wx.getStorageSync('UserInfo')
-    if (user.vip) {
-      this.setData({
-        vipL: user.vip.vip_level
-      })
+    let vipL = 0;
+    if (user.vip != 'null') {
+      vipL = user.vip.vip_level;
     }
+    
+    this.setData({
+      vipL: vipL
+    })
     this.GETAreasList()
     this.getSchoolList()
     this.setData({
