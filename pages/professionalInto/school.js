@@ -7,23 +7,23 @@ Page({
    */
   data: {
     showAddress: -1,
-    activeAddress: {},//已选区域列表
-    activeAddressarr: [],//已选区域列表
+    activeAddress: {}, //已选区域列表
+    activeAddressarr: [], //已选区域列表
 
-    examinationBatch: [],//批次列表
-    examinationBatchChoose: '',//选择的报考批次
+    examinationBatch: [], //批次列表
+    examinationBatchChoose: '', //选择的报考批次
     examinationBatchChoosetitle: '',
-    probabilityList: [],//录取概率列表
-    probabilityID: '',//录取概率Id
-    areaslist: [],//区域列表
+    probabilityList: [], //录取概率列表
+    probabilityID: '', //录取概率Id
+    areaslist: [], //区域列表
 
     probabilityName: "",
 
-    schoolList: [],//学校列表
-    currentPages: 1,//当前页数
-    loading: false,//
+    schoolList: [], //学校列表
+    currentPages: 1, //当前页数
+    loading: false, //
     vipL: '',
-    code:''
+    code: ''
   },
   toStuDetail(e) {
     let id = e.currentTarget.dataset.id
@@ -52,7 +52,7 @@ Page({
         })
     }
   },
-  cancelModel() {//隐藏模态框
+  cancelModel() { //隐藏模态框
     this.setData({
       showAddress: -1
     })
@@ -91,7 +91,7 @@ Page({
       currentPages: 1
     })
   },
-  BatchChoose(e) {//选择报考批次
+  BatchChoose(e) { //选择报考批次
     if (e.currentTarget.dataset.id === this.examinationBatchChoose) {
       this.setData({
         examinationBatchChoose: '',
@@ -110,7 +110,7 @@ Page({
     this.cancelModel()
     this.getSchoolList()
   },
-  probabilityChoose(e) {//选择录取概率
+  probabilityChoose(e) { //选择录取概率
     if (this.data.probabilityID === e.currentTarget.dataset.id) {
       this.setData({
         probabilityID: '',
@@ -128,7 +128,8 @@ Page({
     this.cancelModel()
     this.getSchoolList()
   },
-  getSchoolList({ ...data }) {
+  getSchoolList({ ...data
+  }) {
     if (this.data.loading) return
     this.setData({
       loading: true
@@ -145,7 +146,11 @@ Page({
       batch: this.data.examinationBatchChoosetitle,
       sprint: this.data.probabilityID
     }
-    app.request.majorSchool({ ...data, ...pro, page: this.data.currentPages, code: this.data.code })
+    app.request.majorSchool({ ...data,
+        ...pro,
+        page: this.data.currentPages,
+        code: this.data.code
+      })
       .then(r => {
         if (this.data.currentPages === 1) {
           this.setData({
@@ -171,13 +176,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
-      code:options.code
+      code: options.code
     })
     var user = wx.getStorageSync('UserInfo')
+    let vipL = 0;
+    if (user.vip != 'null') {
+      vipL = user.vip.vip_level;
+    }
     this.setData({
-      vipL: user.vip.vip_level
+      vipL: vipL
     })
     this.GETAreasList()
     this.getSchoolList()
@@ -199,35 +208,35 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.setData({
       currentPages: 1
     })
@@ -237,14 +246,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.getSchoolList()
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
