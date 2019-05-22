@@ -3,6 +3,6 @@
     "action-sheet": "/component/action-sheet/index"
   },
   "navigationBarBackgroundColor": "#000000",
-  "navigationBarTitleText": "高考志愿",
+  "navigationBarTitleText": "高考志愿手册",
   "navigationBarTextStyle": "white"
 }

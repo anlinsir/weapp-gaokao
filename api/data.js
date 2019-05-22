@@ -90,6 +90,14 @@ class api {
     return this._request.getRequest(this._baseUrl + '/api/v1/pay', { ...data }).then(res => res.data)
 
   }
+
+  //考前预测
+  forecastList({...data}){
+    return this._request.getRequest(this._baseUrl + '/api/v1/forecast', { ...data }).then(res => res.data)
+
+  }
+
+
   //志愿测评
   achievementUpdate({...data}){
     return this._request.getRequest(this._baseUrl + '/api/v1/achievement/update', { ...data }).then(res => res.data)

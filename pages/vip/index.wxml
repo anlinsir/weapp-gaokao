@@ -4,7 +4,7 @@
 </view>
 
 <view class='price-box'>
-  <view class='price-item'>
+  <!-- <view class='price-item'>
     <image src='../../static/vip/vip1.png'></image>
     <view  class='flex '>
        <text class='info'>购买后开通<text class='main'>志愿测评</text>功能</text>
@@ -20,21 +20,28 @@
        <text  class='price'><text class='symbol'>￥</text>50</text>
        <button bindtap='PAY' data-id="1" class='buy-now'>立即购买</button>
     </view>
-  </view>
+  </view> -->
 
   <view class='price-item'>
     <image src='../../static/vip/vip3.png'></image>
     <view  class='flex '>
        <text class='info'>购买后开通<text class='main'>所有</text>功能</text>
-       <text  class='price'><text class='symbol'>￥</text>280</text>
+       <text  class='price'><text class='symbol'>￥</text>200</text>
        <button bindtap='PAY'  data-id="3" class='buy-now'>立即购买</button>
     </view>
   </view>
 
+  <view style='padding:0 30rpx;margin-top:30rpx;' class='text-center'>
+    <view>输入推荐人手机号</view>
+    <input bindinput='getinvitation' value="{{invitation}}" style='margin-top:30rpx;border:1rpx solid #666;border-radius:30rpx;height:80rpx;line-height:80rpx;' placeholder='请输入手机号'></input>
+  </view>
+  
+
 </view> 
 
 <view class='share-discount text-center'>
-  <view >分享后立享<text class='red-color'>7</text>折！</view>
+  <!-- <view >分享后立享<text class='red-color'>7</text>折！</view> -->
+  <view style='padding:0 30rpx;'>推荐给好友，好友充值后，凭推荐者手机号，可获得50元红包奖励！</view>  
   <view >
     <button bindtap='ShareOpen' open-type='share'>立即分享</button>
   </view>

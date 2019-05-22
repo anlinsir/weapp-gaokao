@@ -62,6 +62,8 @@
   areaName="{{item.area.name}}"
   low_score="{{item.model.low_score}}"
   low_ranking="{{item.model.low_ranking}}"
+  students="{{item.info.students}}"
+  sprint="{{item.sprint}}"
 
  />
  <view hidden="{{!loading && schoolList.length==0}}">

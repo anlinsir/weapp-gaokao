@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    invitation: '',//手机号
     id:'',
     num:'',
     mobile:'',
@@ -17,7 +18,7 @@ Page({
   },
   Pays(){
     
-    app.request.forcePay({ level: this.data.id })
+    app.request.forcePay({ level: this.data.id, invitation: this.data.invitation})
       .then(r => {
         if (r.code === 0){
           wx.showModal({
@@ -43,7 +44,7 @@ Page({
                   let UserP = r.data
                   wx.setStorageSync('UserInfo',UserP)
                   wx.reLaunch({
-                    url: 'pages/user/index',
+                    url: '/pages/user/index',
                   })
                 })
             }else{
@@ -77,6 +78,7 @@ Page({
     let { mobile ,discount} = wx.getStorageSync('UserInfo')
     this.setData({
       id: options.id,
+      invitation: options.invitation,
       mobile: mobile|| '无'
     })
     if (this.data.id == 1){
@@ -101,15 +103,9 @@ Page({
         })
       }
     }else{
-      if (discount === 1) { 
-        this.setData({
-          num: 196
-        })
-      }else{
-        this.setData({
-          num: 280
-        })
-      }
+      this.setData({
+        num: 200
+      })
     }
   },
 

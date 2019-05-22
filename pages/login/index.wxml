@@ -5,7 +5,7 @@
 
 
 <view class='login-from mid'>
- <view class='title-text text-center'>高考志愿</view>
+ <view class='title-text text-center'>高考志愿手册</view>
 
   <picker bindchange="bindPickerChange" value="{{branchSubjectindex}}" range="{{branchSubject}}">
       <view class='menu-down text-center'>

@@ -21,6 +21,12 @@ Component({
     },
     low_ranking:{
       type:String
+    },
+    students:{
+      type:String
+    },
+    sprint:{
+      type:String
     }
   },
 

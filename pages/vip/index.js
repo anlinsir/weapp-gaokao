@@ -8,14 +8,23 @@ Page({
    */
   data: {
     invite:'',//邀请码
+    invitation:'',
   },
   PAY(e){
     console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
     
     wx.navigateTo({
-      url: `/pages/vip/pay?id=${id}`,
+      url: `/pages/vip/pay?id=${id}&invitation=${this.data.invitation}`,
     })
+  },
+  getinvitation(e){
+    console.log(e)
+    var val = e.detail.value
+    this.setData({
+      invitation:val
+    })
+    console.log(this.data.invitation)
   },
   /**
    * 生命周期函数--监听页面加载

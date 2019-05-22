@@ -52,7 +52,7 @@ Page({
     app.request.Mocks({ ...data, type, area_id })
       .then(r => {
         wx.navigateTo({
-          url: '/pages/VPSubjectIn/school',
+          url: '/pages/testPredictions/school',
         })
       })
       .catch(e => {

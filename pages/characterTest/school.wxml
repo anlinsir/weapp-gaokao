@@ -41,21 +41,24 @@
   <view class='P-box-warp'>
     <view  style="color:{{probabilityID == item.id ?'#FBA97F':''}}" bindtap='probabilityChoose' data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{probabilityList}}"  class="P-box-item">{{item.name}}</view>
   </view>
-
 </view>
-
-
-
-
 </view>
 
 
 <SchoolItem
   wx:for="{{schoolList}}"
   wx:key="{{item.id}}"
-
+  data-id="{{item.id}}"
+  data-title="{{item.name}}"
+  probabilityID="{{probabilityID}}"
+  sprint="{{item.sprint}}"
+  bindtap="toStuDetail"
   Sname="{{item.name}}"
   logo="{{item.logo}}"
+  areaName="{{item.area.name}}"
+  low_score="{{item.model.low_score}}"
+  low_ranking="{{item.model.low_ranking}}"
+  students="{{item.info.students}}"
 
  />
  <view hidden="{{!loading && schoolList.length==0}}">
