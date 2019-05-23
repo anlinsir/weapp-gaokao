@@ -23,8 +23,6 @@ class request {
    * GET类型的网络请求
    */
   getRequest(url, data, header = this._header) {
-    console.log('token')
-    console.log('Bearer ' + wx.getStorageSync('token'))
     return this.requestAll(url, data, {
       Authorization: 'Bearer ' + wx.getStorageSync('token') || ''
     }, 'GET')
@@ -48,8 +46,6 @@ class request {
    * POST类型的网络请求
    */
   postRequest(url, data, header = this._header) {
-    console.log('token')
-    console.log('Bearer ' + wx.getStorageSync('token'))
     return this.requestAll(url, data, {
       "Authorization": 'Bearer ' + wx.getStorageSync('token') || ''
     }, 'POST')
