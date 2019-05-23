@@ -1,6 +1,6 @@
 <!--pages/vip/index.wxml-->
 <view class='top-img'>
-  <image src='../../static/vip/banner2.png'></image>
+  <image src='../../static/vip/banner2.jpg'></image>
 </view>
 
 <view class='price-box'>
