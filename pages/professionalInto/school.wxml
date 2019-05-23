@@ -52,6 +52,7 @@
 
 <SchoolItem
   wx:for="{{schoolList}}"
+  
   wx:key="{{item.id}}"
   data-id="{{item.id}}"
   data-title="{{item.name}}"
@@ -74,4 +75,4 @@
     <i-load-more tip="{{ schoolList.length == 0 && !loading?'暂无数据':'' }}" loading="{{ loading }}" />      
  </view>
 
-<noVip wx:if="{{vipL < 1}}" />
+<noVip length="{{length}}" wx:if="{{vipL < 1}}" />

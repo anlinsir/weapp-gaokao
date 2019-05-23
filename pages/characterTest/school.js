@@ -18,6 +18,7 @@ Page({
     currentPages: 1,//当前页数
     loading: false,//
     vipL:0,
+    length: 0
   },
 
   GETAreasList() {
@@ -108,7 +109,8 @@ Page({
       .then(r => {
         if (this.data.currentPages === 1) {
           this.setData({
-            schoolList: r.data.data
+            schoolList: r.data.data,
+            length: r.data.data.length
           })
         } else {
           let schoolList = this.data.schoolList

@@ -22,7 +22,8 @@ Page({
     schoolList: [], //学校列表
     currentPages: 1, //当前页数
     loading: false, //
-    vipL: ''
+    vipL: '',
+    length:0
   },
   toStuDetail(e) {
     let id = e.currentTarget.dataset.id
@@ -152,7 +153,8 @@ Page({
       .then(r => {
         if (this.data.currentPages === 1) {
           this.setData({
-            schoolList: r.data.data
+            schoolList: r.data.data,
+            length: r.data.data.length
           })
         } else {
           let schoolList = this.data.schoolList

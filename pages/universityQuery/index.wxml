@@ -6,11 +6,7 @@
   <view class="swiper-tab-list {{urlId==2 ? 'on active-color' : ''}}"  bindtap='toSomePage' data-id="2">批次线</view>
 </view>
 
-
-
-
-<swiper bindchange='changeSwiper' current="{{urlId}}" class="swiper-box" duration="300"  >
-  <swiper-item style="overflow:auto;position:relative">
+<view wx:if="{{urlId == 0}}">
     <!--pages/universityQuery/school.wxml-->
 <view class='search-box flex f-c'>
   <input bindinput='changeTitle' value="{{title}}" placeholder='输入学校名字'></input>
@@ -110,22 +106,25 @@
 
  <view wx:if="{{!loading && schoolList.length==0}}">
     <i-load-more tip="{{ schoolList.length == 0 && !loading?'暂无数据':'' }}" loading="{{ loading }}" />      
- </view>
+ </view></view>
 
-  </swiper-item>
-  <swiper-item >
-    <Profession  
-        SubsubmajorsList="{{SubsubmajorsList}}" 
-        submajorsList="{{submajorsList}}" 
-        bind:changeMajors="changeMajors" 
-        bind:changeSubMajors="changeSubMajors"
-        majorsList="{{majorsList}}"
-        name='{{name}}'
-        bind:changePages="changePages"
-        />
-  </swiper-item>
-  <swiper-item>
-   <view style='background:rgba(245,245,245,1);' class='down-menu text-center main-text-color'>
+
+<view wx:if="{{urlId == 1}}">
+<Profession  
+    SubsubmajorsList="{{SubsubmajorsList}}" 
+    submajorsList="{{submajorsList}}" 
+    bind:changeMajors="changeMajors" 
+    bind:changeSubMajors="changeSubMajors"
+    majorsList="{{majorsList}}"
+    name='{{name}}'
+    bind:changePages="changePages"
+    />
+
+</view>
+
+
+<view wx:if="{{urlId == 2}}">
+<view style='background:rgba(245,245,245,1);' class='down-menu text-center main-text-color'>
   <!-- <view  bindtap='changeAddressStatus' data-id="1" class='menu-item nowarp'>
     <text >
       <text  wx:if="{{SactiveAddressNum > 0}}" wx:for="{{SactiveAddress}}">{{item }}</text>
@@ -197,7 +196,20 @@
     </view>
 
   </view>
-</view>
+</view></view>
+
+
+
+<!-- <swiper bindchange='changeSwiper' current="{{urlId}}" class="swiper-box" duration="300"  >
+  <swiper-item style="overflow:auto;position:relative">
+
+
   </swiper-item>
-</swiper>
+  <swiper-item >
+    
+  </swiper-item>
+  <swiper-item>
+   
+  </swiper-item>
+</swiper> -->
 

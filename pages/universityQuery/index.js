@@ -422,11 +422,9 @@ Page({
             schoolList: schoolList
           })
         }
-        if (r.data.data.length && r.data.data.length >= 15) {
           this.setData({
             currentPages: this.data.currentPages + 1
           })
-        }
         this.setData({
           loading: false
         })
