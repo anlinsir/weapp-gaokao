@@ -177,7 +177,8 @@ Page({
   onLoad: function(options) {
     var user = wx.getStorageSync('UserInfo')
     let vipL = 0;
-    if (user.vip != 'null') {
+    console.log(user)
+    if (user.vip != null && typeof user.vip.vip_level != 'undefined') {
       vipL = user.vip.vip_level;
     }
     

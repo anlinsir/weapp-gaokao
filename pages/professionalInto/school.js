@@ -182,7 +182,7 @@ Page({
     })
     var user = wx.getStorageSync('UserInfo')
     let vipL = 0;
-    if (user.vip != 'null') {
+    if (user.vip != null) {
       vipL = user.vip.vip_level;
     }
     this.setData({
