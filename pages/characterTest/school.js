@@ -201,8 +201,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getSchoolList()
-    console.log('tuyhijuoip')
+    // this.getSchoolList()
+    // console.log('tuyhijuoip')
   },
 
   /**

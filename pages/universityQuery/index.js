@@ -497,7 +497,6 @@ Page({
    */
   onReachBottom: function () {
     this.getSchoolList()
-    console.log('tuyhijuoip')
   },
 
   /**
