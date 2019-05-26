@@ -175,9 +175,15 @@ Page({
    */
   onLoad: function (options) {
     var user = wx.getStorageSync('UserInfo')
+    let vipL = 0;
+    if (user.vip != null) {
+      vipL = user.vip.vip_level;
+    }
+    
     this.setData({
-      vipL: user.vip.vip_level
+      vipL: vipL
     })
+
     this.GETAreasList()
     this.getSchoolList()
     this.setData({
