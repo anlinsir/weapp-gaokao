@@ -107,10 +107,11 @@ Page({
     }
     app.request.testoverList({ ...data, ...pro, page: this.data.currentPages, })
       .then(r => {
+        let length = r.data.total >= 30 ? 30 : r.data.total
         if (this.data.currentPages === 1) {
           this.setData({
             schoolList: r.data.data,
-            length: r.data.data.length
+            length: length
           })
         } else {
           let schoolList = this.data.schoolList

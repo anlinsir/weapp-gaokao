@@ -10,7 +10,7 @@
 
     <view class='line-2'>
       <text class='i'>所在地：{{areaName || '暂无'}}</text>
-      <text>录取人数：{{students || '-'}}</text>
+      <text>录取人数：{{students == 0 ? '/' :students}}</text>
       <text class='i'>排名：{{low_ranking || '暂无'}}</text>
       <text>最低分数：{{low_score || '暂无'}}</text>
     </view>

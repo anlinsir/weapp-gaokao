@@ -1,6 +1,6 @@
 {
   "usingComponents": {"Dropdown": "/component/Dropdown/index"},
   "navigationBarBackgroundColor":"#000000",
-  "navigationBarTitleText":"志愿测评",
+  "navigationBarTitleText":"高考志愿手册",
   "navigationBarTextStyle":"white"
 }

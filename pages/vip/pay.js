@@ -73,8 +73,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
-  
     let { mobile ,discount} = wx.getStorageSync('UserInfo')
     this.setData({
       id: options.id,
@@ -82,26 +80,14 @@ Page({
       mobile: mobile|| '无'
     })
     if (this.data.id == 1){
-      if (discount === 1) { 
         this.setData({
-          num: 35
+          num: 150
         })
-      }else{
-        this.setData({
-          num: 50
-        })
-      }
     } else if (this.data.id == 2){
-      if (discount === 1) { 
-        this.setData({
-          num: 175
-        })
-      }else{
         
         this.setData({
-          num: 250
+          num: 100
         })
-      }
     }else{
       this.setData({
         num: 200

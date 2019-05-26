@@ -153,10 +153,11 @@ Page({
         code: this.data.code
       })
       .then(r => {
+        let length = r.data.college.total >= 30 ? 30 : r.data.college.total
         if (this.data.currentPages === 1) {
           this.setData({
             schoolList: r.data.college.data,
-            length: r.data.college.data.length
+            length: length
           })
         } else {
           let schoolList = this.data.schoolList

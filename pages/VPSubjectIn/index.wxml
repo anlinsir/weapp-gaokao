@@ -1,16 +1,33 @@
 <!--pages/VPSubjectIn/index.wxml-->
 <view class='total-score'>
-  <input type='number' disabled='{{desable}}' bindinput="changeData" data-type="total" value="{{total}}"   class='subScore' placeholder='输入总成绩'></input>
+<view class='flex f-b' style='line-height:100rpx;'>
+<text>总分：</text>
+ <input type='number' disabled='{{desable}}' style='width:80%;' bindinput="changeData" data-type="total" value="{{total}}"   class='subScore' placeholder='输入总成绩'></input>
+ </view>
+<view class='flex f-b' style='line-height:100rpx;'>
+<text>排名：</text>
 
-    <input type='number' disabled='{{desable}}' bindinput="changeData" data-type="pLevel" value="{{pLevel}}" style='margin-bottom: 90rpx;margin-top: 20rpx;' class='subScore' placeholder='省内排名'></input>
+    <input type='number' disabled='{{desable}}' bindinput="changeData" data-type="pLevel" value="{{pLevel}}" style='margin-bottom: 90rpx;margin-top: 20rpx;width:80%;' class='subScore' placeholder='省内排名'></input>
+    </view>
 
   <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>一天只能修改一次高考成绩，模考成绩可以随意修改</view>
   <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>录入每科成绩，测评结果更精准哦！(非必填)</view>
-
-  <input type='number' disabled='{{desable}}'  bindinput="changeData" data-type="chinese" value="{{chinese}}" class='subScore' placeholder='语文成绩'></input>
-  <input type='number' disabled='{{desable}}'  bindinput="changeData" data-type="mathematics" value="{{mathematics}}" class='subScore' placeholder='数学成绩'></input>
-  <input type='number'  disabled='{{desable}}'  bindinput="changeData" data-type="english" value="{{english}}" class='subScore' placeholder='英语成绩'></input>
-  <input type='number'  disabled='{{desable}}' bindinput="changeData" data-type="average" value="{{average}}" class='subScore' placeholder='综合成绩'></input>
+<view class='flex f-b' style='line-height:100rpx;'>
+<text>语文：</text>
+  <input type='number' disabled='{{desable}}'  bindinput="changeData"  style='width:80%;' data-type="chinese" value="{{chinese}}" class='subScore' placeholder='语文成绩'></input>
+  </view>
+  <view class='flex f-b' style='line-height:100rpx;'>
+<text>数学：</text>
+  <input type='number' disabled='{{desable}}'  bindinput="changeData"  style='width:80%;' data-type="mathematics" value="{{mathematics}}" class='subScore' placeholder='数学成绩'></input>
+  </view>
+  <view class='flex f-b' style='line-height:100rpx;'>
+<text>外语：</text>
+  <input type='number'  disabled='{{desable}}'  bindinput="changeData"  style='width:80%;' data-type="english" value="{{english}}" class='subScore' placeholder='英语成绩'></input>
+  </view>
+  <view class='flex f-b' style='line-height:100rpx;'>
+<text>综合：</text>
+  <input type='number'  disabled='{{desable}}' bindinput="changeData"  style='width:80%;' data-type="average" value="{{average}}" class='subScore' placeholder='综合成绩'></input>
+  </view>
 
   <button bindtap='toSchoolPage' style='margin-top: 70rpx' class='main-button'>志愿推荐</button>
 

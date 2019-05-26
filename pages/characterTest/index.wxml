@@ -6,8 +6,8 @@
   <image  class='test-icon' src='../../static/tabbar/111.png'></image>
   <view class='test-text'>
     <view  class='test-text-title'>MBTI测试</view>
-    <view class='test-text-desc'>MBTI是近20年来世界上广为使用的性格测试，能准确定位测试者的性格特征。该测试最早由名心理学家卡尔·荣格发明，美国心理学家布里格斯进一步完善了该模型，目前是准确度和置信度最高的性格测试模型。<text class='toTest active-color'>去测试>>></text>
+    <view class='test-text-desc'>MBTI是近20年来世界上广为使用的性格测试，能准确定位测试者的性格特征。该测试最早由名心理学家卡尔·荣格发明，美国心理学家布里格斯进一步完善了该模型，目前是准确度和置信度最高的性格测试模型。<view class='toTest active-color' style='font-size:35rpx'>去测试>>></view>
     </view>
   </view>
 </view>
-<button bindtap='testconfrim' class='main-button'>志愿推荐</button>
+<button bindtap='testconfrim' class='main-button'>查看匹配结果</button>

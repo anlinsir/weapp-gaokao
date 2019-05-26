@@ -12,9 +12,10 @@ Page({
     scoreOne: '',
     scoreTwo: '',
     scoreThere: '',
+    school:''
   },
   saveData() {
-    let { scoreOne, scoreTwo, scoreThere } = this.data
+    let { scoreOne, scoreTwo, scoreThere,school } = this.data
     let temData = {}
     let userPerf = wx.getStorageSync('userPerf')
     //     mock_1: {
@@ -31,7 +32,7 @@ Page({
     temData.mock_one = userPerf.mock_one || {}
     temData.mock_two = userPerf.mock_two || {}
     temData.mock_three = userPerf.mock_three || {}
-
+    temData.school = school || userPerf.school
     temData.mock_one.total = scoreOne
     temData.mock_two.total = scoreTwo
     temData.mock_three.total = scoreThere
@@ -80,6 +81,11 @@ Page({
           scoreThere: value
         })
         break;
+      case '4':
+        this.setData({
+          school: value
+        })
+        break;
     }
 
   },
@@ -94,12 +100,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userPerf = wx.getStorageSync('userPerf')
+    let userPerf = wx.getStorageSync('UserInfo')
     if (userPerf){
       this.setData({
-        scoreOne: userPerf.mock_one.total,
-          scoreTwo:userPerf.mock_two.total,
-        scoreThere: userPerf.mock_three.total
+        scoreOne: userPerf.mock.mock_one.total,
+        scoreTwo: userPerf.mock.mock_two.total,
+        scoreThere: userPerf.mock.mock_three.total,
+        school: userPerf.school
       })
     }
   },

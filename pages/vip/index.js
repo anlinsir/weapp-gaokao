@@ -13,7 +13,6 @@ Page({
   PAY(e){
     console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
-    
     wx.navigateTo({
       url: `/pages/vip/pay?id=${id}&invitation=${this.data.invitation}`,
     })

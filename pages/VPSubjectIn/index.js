@@ -43,22 +43,51 @@ Page({
       .then(r =>{
         console.log(r)
             wx.hideLoading()
-            if(r.data.code === 2000){
+            if(r.code === 2000){
               wx.setStorageSync('UserInfo', r.data)
+              if (this.data.type == 1) {
+                wx.navigateTo({
+                  url: `/pages/VPSubjectIn/school?type=${1}`,
+                })
+              } else if (this.data.type == 2) {
+                wx.setNavigationBarTitle({
+                  title: '专业匹配'
+                })
+                wx.navigateTo({
+                  url: '/pages/professionalInto/index',
+                })
+              } else if (this.data.type == 3) {
+                wx.setNavigationBarTitle({
+                  title: '学校、专业精准匹配'
+                })
+                wx.navigateTo({
+                  url: '/pages/characterTest/index',
+                })
+              }
+            
+            } else if (r.code === 0 || r.message == '修改失败, 每天只能修改一次'){
+                wx.showModal({
+                  title: '当日不能修改成绩',
+                  showCancel:false,
+                  success:()=>{
+                    if (this.data.type == 1) {
+                      wx.navigateTo({
+                        url: `/pages/VPSubjectIn/school?type=${1}`,
+                      })
+                    } else if (this.data.type == 2) {
+                      wx.navigateTo({
+                        url: '/pages/professionalInto/index',
+                      })
+                    } else if (this.data.type == 3) {
+                      wx.navigateTo({
+                        url: '/pages/characterTest/index',
+                      })
+                    }
+                  }
+                })
             }
-            if (this.data.type == 1) {
-              wx.navigateTo({
-                url: `/pages/VPSubjectIn/school?type=${1}`,
-              })
-            } else if (this.data.type == 2) {
-              wx.navigateTo({
-                url: '/pages/professionalInto/index',
-              })
-            } else if (this.data.type == 3) {
-              wx.navigateTo({
-                url: '/pages/characterTest/index',
-              })
-            }
+              
+            
           })
         
   },
@@ -69,6 +98,18 @@ Page({
     this.setData({
       type: options.type
     })
+    if (this.data.type == 1) {
+      
+    } else if (this.data.type == 2) {
+      wx.setNavigationBarTitle({
+        title: '专业匹配'
+      })
+    } else if (this.data.type == 3) {
+      wx.setNavigationBarTitle({
+        title: '学校、专业精准匹配'
+      })
+    }
+
     wx.showLoading({
       title:"获取信息中"
     })
@@ -78,6 +119,14 @@ Page({
         wx.setStorageSync('UserInfo', r.data)
         var user = wx.getStorageSync('UserInfo')
         let { total, ranking, chinese, mathematics, english, complex } = user.achievement
+        total = total == 0 ? '' : total
+        ranking = ranking == 0 ? '' : ranking
+        chinese = chinese == 0 ? '' : chinese
+        mathematics = mathematics == 0 ? '' : mathematics
+        english = english == 0 ? '' : english
+        complex = complex == 0 ? '' : complex
+
+
         this.setData({
           total,//总成绩
           chinese, //语文分数

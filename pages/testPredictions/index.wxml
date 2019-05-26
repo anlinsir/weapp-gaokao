@@ -22,6 +22,11 @@
       <input type='number' bindinput="changescore" data-item="1" value="{{scoreOne}}" placeholder='总成绩'></input>
     </view>
 
+    <view  class='performance-form-item flex'>
+      <text>所在高中</text>
+      <input style='width:510rpx;' bindinput="changescore" data-item="4" value="{{school}}" placeholder='所在高中名称'></input>
+    </view>
+
 
   </view>
 

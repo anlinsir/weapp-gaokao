@@ -54,9 +54,21 @@ Page({
                 userPerf.branchSubjectindex = this.data.branchSubjectindex
                 wx.setStorageSync('userPerf', userPerf)
                     //判断有没有 输入 分数等信息
-                  wx.navigateTo({
-                    url: '/pages/login/two',
+              let { provinceId, branchSubjectindex, ...data } = wx.getStorageSync('userPerf')
+              let type = Number(branchSubjectindex) + 1
+              let area_id = provinceId
+              app.request.Mocks({ ...data, type, area_id })
+                .then(r => {
+                  wx.switchTab({
+                    url: '/pages/voluntPredict/index',
                   })
+                })
+                .catch(e => {
+
+                })
+                  // wx.navigateTo({
+                  //   url: '/pages/login/two',
+                  // })
             })
             .catch(e=>{
               console.log(e)

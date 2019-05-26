@@ -9,7 +9,7 @@
   <view bindtap='toSubjectIn' class='choose-item flex'>
     <image style='width:104rpx;height:102rpx;margin-top:40rpx;' src='../../static/voluntPredict/one.png'></image>
     <view style='padding-top:42rpx'>
-      <view style='margin-bottom:22rpx' class='main-text-color'>高校推荐</view>
+      <view style='margin-bottom:22rpx;font-size:38rpx' class='main-text-color'>高校推荐</view>
       <view class='sub-text-color'>一键轻松推荐高校推荐志愿</view>
     </view>
   </view>
@@ -17,7 +17,7 @@
    <view  bindtap='toprofessional' class='choose-item flex'>
     <image style='width:104rpx;height:102rpx;margin-top:40rpx;' src='../../static/voluntPredict/major.png'></image>
     <view style='padding-top:42rpx'>
-      <view style='margin-bottom:22rpx' class='main-text-color'>专业匹配</view>
+      <view style='margin-bottom:22rpx;font-size:38rpx' class='main-text-color'>专业匹配</view>
       <view class='sub-text-color'>根据专业精准推荐高校志愿</view>
     </view>
   </view>
@@ -25,7 +25,10 @@
   <view  bindtap='tocharactertest' class='choose-item flex'>
     <image style='width:104rpx;height:99rpx;margin-top:40rpx;' src='../../static/voluntPredict/searchs.png'></image>
     <view style='padding-top:42rpx'>
-      <view style='margin-bottom:22rpx' class='main-text-color'>精准匹配</view>
+      <view style='margin-bottom:22rpx;font-size:38rpx' class='main-text-color'>
+       <text>学校、专业精准匹配</text>
+       <text style='display:inline-block;padding:8rpx 10rpx;font-size:30rpx;background:linear-gradient(270deg,rgba(249,212,35,1),rgba(255,78,80,1));margin-left:20rpx;color:#fff;transform:translateY(-15rpx);'>推荐</text>
+      </view>
       <view class='sub-text-color'>剖析考生性格，推荐适合志愿</view>
     </view>
   </view>

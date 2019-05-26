@@ -12,11 +12,12 @@ Page({
     scoreOne: '',
     scoreTwo: '',
     scoreThere: '',
+    school:'',
 
     
   },
   saveData() {
-    let { scoreOne, scoreTwo, scoreThere } = this.data
+    let { scoreOne, scoreTwo, scoreThere, school } = this.data
     let temData = {}
     let userPerf = wx.getStorageSync('twotab') || {}
     //     mock_1: {
@@ -33,7 +34,7 @@ Page({
     temData.mock_one = userPerf.mock_one || {}
     temData.mock_two = userPerf.mock_two || {}
     temData.mock_three = userPerf.mock_three || {}
-
+    temData.school = school || userPerf.school
     temData.mock_one.total = scoreOne || 0
     temData.mock_two.total = scoreTwo || 0
     temData.mock_three.total = scoreThere || 0
@@ -81,6 +82,11 @@ Page({
           scoreThere: value
         })
         break;
+      case '4':
+        this.setData({
+          school: value
+        })
+        break;
     }
 
   },
@@ -100,7 +106,8 @@ Page({
       this.setData({
         scoreOne: userPerf.mock_one.total,
         scoreTwo: userPerf.mock_two.total,
-        scoreThere: userPerf.mock_three.total
+        scoreThere: userPerf.mock_three.total,
+        school: userPerf.school
       })
     }
     

@@ -52,7 +52,7 @@
 
 <SchoolItem
   wx:for="{{schoolList}}"
-  length="{{schoolList.length}}"
+  length="{{length}}"
   wx:key="{{item.id}}"
   data-id="{{item.id}}"
   data-title="{{item.name}}"
