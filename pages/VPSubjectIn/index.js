@@ -15,7 +15,8 @@ Page({
     pLevel:'',//省内排名
 
     type:'',//判断下一步去哪一个页面
-    desable:false
+    desable:false,
+    is_change:false,//是否改变过值
   },
   toSchoolPage(){
     this.saveAchi()
@@ -24,7 +25,8 @@ Page({
     let type = e.target.dataset.type
     let value = e.detail.value
     this.setData({
-      [type]: value
+      [type]: value,
+      is_change:true,
     })
   },
   saveAchi(){
@@ -66,6 +68,27 @@ Page({
               }
             
             } else if (r.code === 0 || r.message == '修改失败, 每天只能修改一次'){
+              if (!this.data.is_change){
+                if (this.data.type == 1) {
+                  wx.navigateTo({
+                    url: `/pages/VPSubjectIn/school?type=${1}`,
+                  })
+                } else if (this.data.type == 2) {
+                  wx.setNavigationBarTitle({
+                    title: '专业匹配'
+                  })
+                  wx.navigateTo({
+                    url: '/pages/professionalInto/index',
+                  })
+                } else if (this.data.type == 3) {
+                  wx.setNavigationBarTitle({
+                    title: '学校、专业精准匹配'
+                  })
+                  wx.navigateTo({
+                    url: '/pages/characterTest/index',
+                  })
+                }
+              }else{
                 wx.showModal({
                   title: '当日不能修改成绩',
                   showCancel:false,
@@ -85,6 +108,7 @@ Page({
                     }
                   }
                 })
+              }
             }
               
             
