@@ -10,7 +10,7 @@
     <input type='number' disabled='{{desable}}' bindinput="changeData" data-type="pLevel" value="{{pLevel}}" style='margin-bottom: 90rpx;margin-top: 20rpx;width:80%;' class='subScore' placeholder='省内排名'></input>
     </view>
 
-  <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>一天只能修改一次高考成绩，模考成绩可以随意修改</view>
+  <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>注：高考成绩每日仅可修改一次</view>
   <view  style='font-size:28rpx;margin-bottom: 40rpx' class='text-center main-text-color'>录入每科成绩，测评结果更精准哦！(非必填)</view>
 <view class='flex f-b' style='line-height:100rpx;'>
 <text>语文：</text>
@@ -29,7 +29,7 @@
   <input type='number'  disabled='{{desable}}' bindinput="changeData"  style='width:80%;' data-type="average" value="{{average}}" class='subScore' placeholder='综合成绩'></input>
   </view>
 
-  <button bindtap='toSchoolPage' style='margin-top: 70rpx' class='main-button'>志愿推荐</button>
+  <button bindtap='toSchoolPage' style='margin-top: 70rpx' class='main-button'>{{btnText ? btnText : '志愿推荐'}}</button>
 
 
   

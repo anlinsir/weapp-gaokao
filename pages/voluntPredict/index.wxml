@@ -27,7 +27,7 @@
     <view style='padding-top:42rpx'>
       <view style='margin-bottom:22rpx;font-size:38rpx' class='main-text-color'>
        <text>学校、专业精准匹配</text>
-       <text style='display:inline-block;padding:8rpx 10rpx;font-size:30rpx;background:linear-gradient(270deg,rgba(249,212,35,1),rgba(255,78,80,1));margin-left:20rpx;color:#fff;transform:translateY(-15rpx);'>推荐</text>
+       <text style='display:inline-block;padding:6rpx 10rpx;font-size:26rpx;background:linear-gradient(270deg,rgba(249,212,35,1),rgba(255,78,80,1));margin-left:20rpx;color:#fff;transform:translateY(-15rpx);'>推荐</text>
       </view>
       <view class='sub-text-color'>剖析考生性格，推荐适合志愿</view>
     </view>

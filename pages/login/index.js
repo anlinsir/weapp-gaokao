@@ -11,7 +11,14 @@ Page({
         areaslist: [],
         branchSubjectindex: -1, //分科id
         provinceIndex: 0, //省份id
-        provinceId: ''
+        provinceId: '',
+        school:''
+    },
+  changescore(e){
+    let value = e.detail.value
+    this.setData({
+      school:value
+    })
     },
     provincebindPickerChange(val) {
         this.setData({
@@ -57,7 +64,7 @@ Page({
               let { provinceId, branchSubjectindex, ...data } = wx.getStorageSync('userPerf')
               let type = Number(branchSubjectindex) + 1
               let area_id = provinceId
-              app.request.Mocks({ ...data, type, area_id })
+              app.request.Mocks({ ...data, type, area_id, school: this.data.school })
                 .then(r => {
                   wx.switchTab({
                     url: '/pages/voluntPredict/index',

@@ -1,5 +1,5 @@
 <view class="top-title">
-  为保证测评准确性，请完成以下测评！
+  请完成以下测评！
 </view>
 
 <view bindtap='toTestPageDetail' wx:for="{{1}}" class='test-part-item flex f-b'>
@@ -10,4 +10,4 @@
     </view>
   </view>
 </view>
-<button bindtap='testconfrim' class='main-button'>查看匹配结果</button>
+<!-- <button bindtap='testconfrim' class='main-button'>查看匹配结果</button> -->

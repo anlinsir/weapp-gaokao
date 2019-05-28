@@ -17,6 +17,7 @@ Page({
     type:'',//判断下一步去哪一个页面
     desable:false,
     is_change:false,//是否改变过值
+    btnText:''
   },
   toSchoolPage(){
     this.saveAchi()
@@ -126,11 +127,18 @@ Page({
       
     } else if (this.data.type == 2) {
       wx.setNavigationBarTitle({
-        title: '专业匹配'
+        title: '专业匹配',
+        
+      }),
+      this.setData({
+        btnText: "下一步"
       })
     } else if (this.data.type == 3) {
       wx.setNavigationBarTitle({
         title: '学校、专业精准匹配'
+      })
+      this.setData({
+        btnText: "下一步"
       })
     }
 

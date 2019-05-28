@@ -6,11 +6,13 @@
   <view class="swiper-tab-list {{urlId==2 ? 'on active-color' : ''}}"  bindtap='toSomePage' data-id="2">批次线</view>
 </view>
 
-<view wx:if="{{urlId == 0}}">
+<view wx:if="{{urlId == 0}}" style='position:relative'>
+<view bindtap='cancelModel' wx:if="{{showmodel}}" style='background:rgba(0,0,0,0.4);width:100%;height:100%;position:absolute;' >
+</view>
     <!--pages/universityQuery/school.wxml-->
 <view class='search-box flex f-c'>
   <input bindinput='changeTitle' value="{{title}}" placeholder='输入学校名字'></input>
-  <image catchtap="titleGetList" src='../../static/tabbar/search.png'></image>
+  <image style='width:40rpx;height:40rpx;' catchtap="titleGetList" src='../../static/tabbar/search.png'></image>
 </view>
 
 <!-- <view class='fixed' hidden="{{showAddress <= 0}}"></view> -->
@@ -23,19 +25,38 @@
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
   </view>
 
-  <view bindtap='changeAddressStatus' data-id="2" class='menu-item'>
+  <view style='position:relative' bindtap='changeAddressStatus' data-id="2" class='menu-item'>
     <text data-id="1">{{typeName || '高校类型'}}</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+
+    <view hidden="{{showAddress != 2}}" class='P-box' style='width:100%' >
+  <view class='P-box-warp'  style='height:500rpx;overflow:auto;' >
+    <view style="color:{{typeId == item.id ?'#FBA97F':''}}" bindtap='typeChoose' data-name="{{item.name}}" data-id="{{item.id}}" wx:key="{{index}}" wx:for="{{schoolTypeList}}" class="P-box-item">{{item.name}}</view>
+  </view>
+</view>
   </view>
 
-  <view bindtap='changeAddressStatus' data-id="3" class='menu-item'>
+  <view  style='position:relative'  bindtap='changeAddressStatus' data-id="3" class='menu-item'>
     <text data-id="1">{{tagName || '高校标签' }}</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+
+    <view hidden="{{showAddress != 3}}" class='P-box' style='width:100%' >
+  <view class='P-box-warp'  style='height:500rpx;overflow:auto;' >
+    <view style="color:{{TagId === item.id ?'#FBA97F':''}}" bindtap='ChangeTag' data-name="{{item.name}}" data-id="{{item.id}}" wx:key="{{index}}" wx:for="{{schoolTagList}}" class="P-box-item">{{item.name}}</view>
+  </view>
+</view>
   </view>
 
-  <view  bindtap='changeAddressStatus' data-id="4" class='menu-item'>
+  <view style='position:relative'  bindtap='changeAddressStatus' data-id="4" class='menu-item'>
     <text data-id="2">{{examinationBatch[examinationBatchChoose].name || '录取批次'}}</text>
     <image  class='down-icon' src='../../static/voluntPredict/down.png'></image>
+
+    <view hidden="{{showAddress != 4}}" class='P-box' style='width:100%;padding-left:5rpx;' >
+  <view class='P-box-warp'>
+    <view style="color:{{examinationBatchChoose == index ?'#FBA97F':''}}" bindtap='BatchChoose' data-id="{{index}}" data-title="{{item.title}}" wx:key="{{index}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
+  </view>
+</view>
+
   </view>
 
 
@@ -53,25 +74,12 @@
 </view>
 
 
-<view hidden="{{showAddress != 2}}" class='P-box' >
-  <view class='P-box-warp'  style='height:500rpx;overflow:auto;' >
-    <view style="color:{{typeId == item.id ?'#FBA97F':''}}" bindtap='typeChoose' data-name="{{item.name}}" data-id="{{item.id}}" wx:key="{{index}}" wx:for="{{schoolTypeList}}" class="P-box-item">{{item.name}}</view>
-  </view>
-</view>
 
 
-<view hidden="{{showAddress != 3}}" class='P-box' >
-  <view class='P-box-warp'  style='height:500rpx;overflow:auto;' >
-    <view style="color:{{TagId === item.id ?'#FBA97F':''}}" bindtap='ChangeTag' data-name="{{item.name}}" data-id="{{item.id}}" wx:key="{{index}}" wx:for="{{schoolTagList}}" class="P-box-item">{{item.name}}</view>
-  </view>
-</view>
 
 
-<view hidden="{{showAddress != 4}}" class='P-box' >
-  <view class='P-box-warp'>
-    <view style="color:{{examinationBatchChoose == index ?'#FBA97F':''}}" bindtap='BatchChoose' data-id="{{index}}" data-title="{{item.title}}" wx:key="{{index}}" wx:for="{{examinationBatch}}" class="P-box-item">{{item.name}}</view>
-  </view>
-</view>
+
+
 
 
 
@@ -82,6 +90,7 @@
 
 
 </view>
+
 
 <newSchoolItem
   wx:for="{{schoolList}}"
@@ -97,8 +106,6 @@
   area="{{item.info.city}}"
   batchs="{{item.batchs}}"
   type="{{item.type.name}}"
-  
- 
  />
  <view hidden="{{!loading && schoolList.length==0}}">
     <i-load-more tip="{{ schoolList.length>0&&!loading?'暂无更多数据':'' }}" loading="{{ loading }}" />      

@@ -57,7 +57,7 @@ Page({
     activeAddressNum:0,
     yearList: [ '2018', '2017', '2016', '2015', '2014', '2013', '2012',],//年份列表
     yearListId:'',
-
+    showmodel:false,
     Sareaslist:[],//批次区域列表
     SactiveAddress:{},
     SactiveAddressNum:0,
@@ -286,13 +286,15 @@ Page({
   },
   cancelModel() {//隐藏模态框
     this.setData({
-      showAddress: -1
+      showAddress: -1,
+      showmodel: false
     })
   },
   changeAddressStatus(e) { //显示下拉框
     console.log(e.currentTarget.dataset.id)
     this.setData({
-      currentPages:1
+      currentPages:1,
+      showmodel:true
     })
     if (e.currentTarget.dataset.id == this.data.showAddress) {
       

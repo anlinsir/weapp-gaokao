@@ -39,6 +39,10 @@ Page({
   },
   testconfrim(){
     //到最后一个的时候
+    wx.showLoading({
+      title: '请等待...',
+      mask:true
+    })
     let result = {}
     for (var i in this.data.subjectlist) {
       var title = this.data.subjectresult[i]
@@ -59,10 +63,14 @@ Page({
       .then(r=>{
         console.log(r)
         let {exam,id,user_id} = r.data
+        wx.navigateTo({
+          url: '/pages/characterTest/school',
+        })
+        wx.hideLoading()
       })
-    wx.navigateBack({
-      delta:1
-    })
+    // wx.navigateBack({
+    //   delta:1
+    // })
   },
   addIndex() {
     var a = Number(this.data.urlId)
@@ -104,10 +112,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showToast({
+    wx.showLoading({
       title: '加载中...',
       icon: 'none',
-      duration: 100000
+      duration: 100000,
+      mask:true
     })
     app.request.getSubjectList()
       .then(r => {
@@ -117,7 +126,7 @@ Page({
         this.setData({
           swiperNum: this.data.subjectlist.length
         })
-        wx.hideToast()
+        wx.hideLoading()
       })
     // app.request.getpartSubjectList()
     //   .then(r => {

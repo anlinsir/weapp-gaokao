@@ -24,6 +24,30 @@ Page{
   margin-bottom: 205rpx;
   text-shadow:0rpx 5rpx 3rpx rgba(47,32,5,0.5);
 }
+.performance-form-item{
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80rpx;
+  position: relative;
+}
+.performance-form-item text{
+  font-size:30rpx;
+  color:rgba(77,77,77,1);
+}
+.performance-form-item input{
+  width:540rpx;
+  padding-left: 80rpx;
+  height:100rpx;
+  box-sizing: border-box;
+  background:rgba(255,255,255,1);
+  border:1rpx solid rgba(226, 226, 226, 1);
+  border-radius:50rpx;
+  font-size:30rpx;
+  
+}
+.performance-form-item input::placeholder{
+  color:rgba(153,153,153,1);
+}
 .menu-down{
   width:640rpx;
   height:100rpx;
