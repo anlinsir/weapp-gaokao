@@ -181,7 +181,7 @@ class api {
 
   majorSchool({ ...data
   }) {
-    return this._request.getRequest(this._baseUrl + '/api/v1/majors/college', { ...data
+    return this._request.getRequest(this._baseUrl + '/api/v1/college/majors', { ...data
     }).then(res => res.data)
 
   }
