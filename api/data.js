@@ -84,13 +84,23 @@ class api {
     }).then(res => res.data)
 
   }
+
+  //学校列表 --- 通过专业搜索院校列表
+  schoolListScoresMajor({ ...data
+  }) {
+    return this._request.getRequest(this._baseUrl + '/api/v1/college/majors', {
+      ...data
+    }).then(res => res.data)
+  }
+
   //学校详情 --- 专业录取分数线
   schoolDetailScoresMajor({ ...data
   }) {
-    return this._request.getRequest(this._baseUrl + '/api/v1/college/type', { ...data
+    return this._request.getRequest(this._baseUrl + '/api/v1/college/type', {
+      ...data
     }).then(res => res.data)
-
   }
+
   //获取题目列表
   getSubjectList({ ...data
   }) {
@@ -122,8 +132,10 @@ class api {
   }
 
   //考前预测
-  forecastList({...data}){
-    return this._request.getRequest(this._baseUrl + '/api/v1/forecast', { ...data }).then(res => res.data)
+  forecastList({ ...data
+  }) {
+    return this._request.getRequest(this._baseUrl + '/api/v1/forecast', { ...data
+    }).then(res => res.data)
 
   }
 

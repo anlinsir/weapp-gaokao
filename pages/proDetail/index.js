@@ -42,7 +42,7 @@ Page({
     this.getSchool()
   },
   getSchool(){
-    app.request.majorSchool({ code: this.data.id, page: this.data.page	})
+    app.request.schoolListScoresMajor({ code: this.data.id, page: this.data.page	})
       .then(r=>{
         this.setData({
           schoolList: r.data.college.data
