@@ -11,6 +11,7 @@ Page({
     majorDetail:{},
     page:1,
     id:"",
+    pages:1
 
   },
   toStuDetail(e) {
@@ -33,7 +34,7 @@ Page({
     this.setData({
       id: options.id
     })
-    app.request.majorDetails({ code: options.id})
+    app.request.majorDetails({ code: options.id, page: this.data.page})
       .then(r=>{
         this.setData({
           majorDetail:r.data
@@ -44,9 +45,19 @@ Page({
   getSchool(){
     app.request.schoolListScoresMajor({ code: this.data.id, page: this.data.page	})
       .then(r=>{
-        this.setData({
-          schoolList: r.data.college.data
-        })
+        if (this.data.pages === 1){
+          this.setData({
+            schoolList: r.data.college.data,
+          })
+        }else{
+          let schoolList = this.data.schoolList
+          for (var i of  r.data.college.data){
+            schoolList.push(i)
+          }
+          this.setData({
+            schoolList: schoolList,
+          })
+        }
 
       })
   },
@@ -90,7 +101,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      pages: this.data.pages + 1
+    })
+    this.getSchool()
   },
 
   /**
