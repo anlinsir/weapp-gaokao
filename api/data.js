@@ -198,6 +198,14 @@ class api {
 
   }
 
+  //判断能否支付
+
+  canPay({...data}){
+    return this._request.getRequest(this._baseUrl + '/api/v1/options/vip', {
+    ...data}).then(res => res.data)
+
+  }
+
 
 
 
