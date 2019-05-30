@@ -19,7 +19,7 @@ Page({
   saveData() {
     let { scoreOne, scoreTwo, scoreThere, school } = this.data
     let temData = {}
-    let userPerf = wx.getStorageSync('twotab') || {}
+    let userPerf = wx.getStorageSync('userPerf') || {}
     //     mock_1: {
     //         total: scoreOne
     //     },
@@ -42,12 +42,12 @@ Page({
 
     userPerf = Object.assign(userPerf, temData)
     console.log(userPerf)
-    wx.setStorageSync('twotab', userPerf)
-    console.log(wx.getStorageSync('twotab'))
+    wx.setStorageSync('userPerf', userPerf)
+    console.log(wx.getStorageSync('userPerf'))
   },
   toIndex() {
     this.saveData()
-    let { provinceId, branchSubjectindex, ...data } = wx.getStorageSync('twotab')
+    let { provinceId, branchSubjectindex, ...data } = wx.getStorageSync('userPerf')
     let type = Number(branchSubjectindex) + 1
     let area_id = provinceId
     app.request.Mocks({ ...data, type, area_id })
@@ -101,12 +101,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userPerf = wx.getStorageSync('twotab') || wx.getStorageSync('userPerf')
+    let userPerf = wx.getStorageSync('UserInfo')
     if (userPerf) {
       this.setData({
-        scoreOne: userPerf.mock_one.total,
-        scoreTwo: userPerf.mock_two.total,
-        scoreThere: userPerf.mock_three.total,
+        scoreOne: userPerf.mock.mock_one.total,
+        scoreTwo: userPerf.mock.mock_two.total,
+        scoreThere: userPerf.mock.mock_three.total,
         school: userPerf.school
       })
     }
