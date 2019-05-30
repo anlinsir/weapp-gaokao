@@ -8,6 +8,7 @@ Page({
    */
   data: {
     userInfo:null,
+    hideVip:true
   },
 
   /**
@@ -55,6 +56,22 @@ Page({
     this.setData({
       userInfo: user
     })
+
+    app.request.canPay()
+      .then(r => {
+        console.log(r)
+        if (r.code === 1000) {
+          wx.setStorageSync('noPay', 1)
+          this.setData({
+            hideVip:true
+          })
+        } else if (r.code === 2000) {
+          wx.setStorageSync('noPay', 0)
+          this.setData({
+            hideVip:false
+          })
+        }
+      })
   },
 
   /**

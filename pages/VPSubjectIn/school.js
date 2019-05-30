@@ -23,7 +23,8 @@ Page({
     currentPages: 1, //当前页数
     loading: false, //
     vipL: '',
-    length:0
+    length:0,
+    hideVip:true
   },
   toStuDetail(e) {
     let id = e.currentTarget.dataset.id
@@ -217,7 +218,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (wx.getStorageSync('noPay') === 1){
+      this.setData({
+        hideVip:true
+      })
+    }else{
+      this.setData({
+        hideVip: false
+      })
+    }
   },
 
   /**

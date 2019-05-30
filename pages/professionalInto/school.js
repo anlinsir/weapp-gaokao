@@ -9,7 +9,7 @@ Page({
     showAddress: -1,
     activeAddress: {}, //已选区域列表
     activeAddressarr: [], //已选区域列表
-
+    hideVip:true,
     examinationBatch: [], //批次列表
     examinationBatchChoose: '', //选择的报考批次
     examinationBatchChoosetitle: '',
@@ -219,7 +219,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (wx.getStorageSync('noPay') === 1) {
+      this.setData({
+        hideVip: true
+      })
+    } else {
+      this.setData({
+        hideVip: false
+      })
+    }
   },
 
   /**

@@ -1,4 +1,5 @@
 // pages/voluntPredict/index.js
+const app = getApp()
 Page({
 
   /**
@@ -59,6 +60,15 @@ Page({
    */
   onShow: function () {
     var user = wx.getStorageSync("UserInfo")
+    app.request.canPay()
+      .then(r => {
+        console.log(r)
+        if (r.code === 1000) {
+          wx.setStorageSync('noPay', 1)
+        } else if (r.code === 2000) {
+          wx.setStorageSync('noPay', 0)
+        }
+      })
     // if (!user.vip_level  || user.vip_level < 2){
     //  wx.showModal({
     //   title: '您的等级不足，不能使用此功能',
