@@ -147,7 +147,7 @@ Page({
       batch: this.data.examinationBatchChoosetitle,
       sprint: this.data.probabilityID
     }
-    app.request.majorSchool({ ...data,
+    app.request.majorQuery({ ...data,
         ...pro,
         page: this.data.currentPages,
         code: this.data.code

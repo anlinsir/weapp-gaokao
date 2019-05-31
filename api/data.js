@@ -198,9 +198,12 @@ class api {
 
   }
 
-
-
-
+  majorQuery({...data}){
+    return this._request.getRequest(this._baseUrl + '/api/v1/majors/college', {
+      ...data
+    }).then(res => res.data)
+  }
+    
 
 }
-export default api
+export default api  
