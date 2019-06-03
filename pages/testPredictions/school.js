@@ -18,7 +18,7 @@ Page({
     areaslist: [],//区域列表
 
     probabilityName: "",
-
+    hideVip:true,
     schoolList: [],//学校列表
     currentPages: 1,//当前页数
     loading: false,//
@@ -207,7 +207,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (wx.getStorageSync('noPay') === 1) {
+      this.setData({
+        hideVip: true
+      })
+    } else {
+      this.setData({
+        hideVip: false
+      })
+    }
   },
 
   /**

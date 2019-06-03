@@ -17,56 +17,65 @@ Page({
     ]
   },
   Pays(){
-    
-    app.request.forcePay({ level: this.data.id, invitation: this.data.invitation})
-      .then(r => {
-        if (r.code === 0){
-          wx.showModal({
-            title: r.message,
-          })
+    app.request.canPay()
+      .then(r=>{
+        if(r.code === 1000){
+          console.log('此时不能支付')
           return
-        }
-        wx.showLoading({
-          title: '正在发起支付',
-          mask: true
-        })
-        wx.requestPayment({
-          timeStamp: r.data.payinfo.timeStamp,
-          nonceStr: r.data.payinfo.nonceStr,
-          package: r.data.payinfo.package,
-          signType: r.data.payinfo.signType,
-          paySign: r.data.payinfo.paySign,
-          success(se) {
-            //重新加载用户信息
-            if(r.code === 2000){
-              app.request.getUserInfo()
-                .then(r=>{
-                  let UserP = r.data
-                  wx.setStorageSync('UserInfo',UserP)
-                  wx.reLaunch({
-                    url: '/pages/user/index',
-                  })
+        }else{
+          app.request.forcePay({ level: this.data.id, invitation: this.data.invitation})
+            .then(r => {
+              if (r.code === 0){
+                wx.showModal({
+                  title: r.message,
                 })
-            }else{
-              wx.showModal({
-                title: r.message,
+                return
+              }
+              wx.showLoading({
+                title: '正在发起支付',
+                mask: true
               })
-            }
-          },
-          fail(e) {
-            wx.showModal({
-              title: e,
+              wx.requestPayment({
+                timeStamp: r.data.payinfo.timeStamp,
+                nonceStr: r.data.payinfo.nonceStr,
+                package: r.data.payinfo.package,
+                signType: r.data.payinfo.signType,
+                paySign: r.data.payinfo.paySign,
+                success(se) {
+                  //重新加载用户信息
+                  if(r.code === 2000){
+                    app.request.getUserInfo()
+                      .then(r=>{
+                        let UserP = r.data
+                        wx.setStorageSync('UserInfo',UserP)
+                        wx.reLaunch({
+                          url: '/pages/user/index',
+                        })
+                      })
+                  }else{
+                    wx.showModal({
+                      title: r.message,
+                    })
+                  }
+                },
+                fail(e) {
+                  wx.showModal({
+                    title: e,
+                  })
+                },
+                complete(c) {
+                  console.log(c)
+                  wx.hideLoading()
+                }
+              })
             })
-          },
-          complete(c) {
-            console.log(c)
-            wx.hideLoading()
-          }
-        })
+            .catch(e=>{
+              console.log(e)
+            })
+        }
       })
-      .catch(e=>{
-        console.log(e)
-      })
+
+      
   },
   
   /**

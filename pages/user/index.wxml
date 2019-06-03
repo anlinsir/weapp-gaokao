@@ -35,7 +35,7 @@
     <text>考生信息</text>
   </view>
 
-  <view bindtap='toVIP' class='user-menu-item'>
+  <view wx:if="{{!hideVip}}" bindtap='toVIP' class='user-menu-item'>
     <image class='item-icon item-icon-open-vip' src='../../static/tabbar/openvip.png'></image>
     <image class='right-arrwor' src='../../static/tabbar/right.png'></image>
     <text>开通VIP</text>

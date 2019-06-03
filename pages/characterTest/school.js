@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hideVip:true,
     showAddress: -1,
     activeAddress: {},//已选区域列表
     examinationBatch: [],//批次列表
@@ -178,7 +179,15 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    if (wx.getStorageSync('noPay') === 1) {
+      this.setData({
+        hideVip: true
+      })
+    } else {
+      this.setData({
+        hideVip: false
+      })
+    }
   },
 
   /**

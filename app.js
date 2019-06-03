@@ -54,6 +54,15 @@ App({
                               console.log(data)
                                 _this.globalData.userInfo = data
                                 wx.setStorageSync('token', data.token)
+                              _this.request.canPay()
+                                .then(r=>{
+                                  console.log(r)
+                                  if(r.code === 1000){
+                                    wx.setStorageSync('noPay', false)
+                                  }else if(r.code === 2000){
+                                    wx.setStorageSync('noPay', true)
+                                  }
+                                })
                             })
                             .catch(e=>{
                               console.log(e)
