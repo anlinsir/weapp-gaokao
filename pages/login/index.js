@@ -111,12 +111,48 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+      
         console.log(wx.getStorageSync('userPerf'))
         if (wx.getStorageSync('userPerf')) {
             wx.switchTab({
                 url: '/pages/voluntPredict/index'
             })
             return
+        }else{
+          wx.showLoading({
+            title: '信息加载中',
+            mask:true
+          })
+          app.request.getUserInfo()
+            .then(r=>{
+              if (r.data.code === 7900){
+                wx.login({
+                  success({ code }) {
+                    app.request.Login({code: code})
+                      .then(r => {
+                        wx.setStorageSync('token', r.data.data.token)
+                        app.request.getUserInfo()
+                          .then(res => {
+                            if (res.data.area_id && res.data.type) {
+                              wx.switchTab({
+                                url: '/pages/voluntPredict/index'
+                              })
+                            }
+                          })
+                      })
+                  }
+                })
+              }else{
+                
+                if (r.data.area_id && r.data.type) {
+                  wx.switchTab({
+                    url: '/pages/voluntPredict/index'
+                  })
+                }
+              }
+              
+              wx.hideLoading()
+            })
         }
         this.GETAreasList()
         this.setData({
@@ -169,7 +205,5 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
-
-    }
+    
 })

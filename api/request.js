@@ -57,6 +57,8 @@ class request {
   requestAll(url, data, header, method) {
     header['Authorization'] = 'Bearer ' + wx.getStorageSync('token');
     var _this = this
+    var pages = getCurrentPages(); //获取加载的页面信息（结果是个数组）
+   
     return new Promise((resolve, reject) => {
       wx.request({
         url: url,
@@ -79,9 +81,7 @@ class request {
                     mask: true
                   })
                   wx.login({
-                    success({
-                      code
-                    }) {
+                    success({ code }) {
                       _this.getRequest(_this._baseUrl + '/api/v1/auth/session', {
                           code: code
                         })

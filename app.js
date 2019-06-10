@@ -33,7 +33,7 @@ App({
         title: '专科批'
   }],//批次列表
     onLaunch: function(res) { //获取本地或者远程用户信息
-      
+      this.overShare()
         var _this = this
         // wx.showModal({
         //   title: res.query.invite,
@@ -81,5 +81,31 @@ App({
     },
     removeUserInfo() { //移除用户信息
 
-    }
+    },
+  //重写分享方法
+  overShare: function () {
+    //监听路由切换
+    //间接实现全局设置分享内容
+    wx.onAppRoute(function (res) {
+      //获取加载的页面
+      let pages = getCurrentPages(),
+        //获取当前页面的对象
+        view = pages[pages.length - 1],
+        data;
+      if (view) {
+        data = view.data;
+        // console.log('是否重写分享方法', data.isOverShare);
+        if (!data.isOverShare) {
+          data.isOverShare = true;
+          view.onShareAppMessage = function () {
+            //你的分享配置
+            return {
+              title: '高考一点通',
+              path: `/pages/login/index?invite=${this.data.invite}`,
+            };
+          }
+        }
+      }
+    })
+  },
 })
